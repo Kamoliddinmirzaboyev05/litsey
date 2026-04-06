@@ -23,16 +23,16 @@ export function Header() {
         <div className="container mx-auto px-4 py-2">
           <div className="flex items-center justify-between text-sm">
             <div className="flex items-center gap-4">
-              <a href="tel:+998712345678" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+              <a href="tel:+998732413307" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
                 <Phone size={16} />
-                <span className="hidden sm:inline">+998 (71) 234-56-78</span>
+                <span className="hidden sm:inline">+99873 241-33-07</span>
               </a>
             </div>
             <div className="flex items-center gap-4">
               <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
                 <Facebook size={18} />
               </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
+              <a href="https://instagram.com/fdtu1al.uz" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
                 <Instagram size={18} />
               </a>
               <a href="https://t.me" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
@@ -57,15 +57,15 @@ export function Header() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3">
-            <div className="w-14 h-14 bg-[#0d89b1] rounded-full flex items-center justify-center text-white font-bold text-xl">
-              MV
-            </div>
-            <div className="hidden md:block">
-              <div className="text-lg font-bold text-gray-900">M.S.Vosiqova nomidagi</div>
-              <div className="text-sm text-gray-600">Akademik litsey</div>
-            </div>
-          </Link>
+           <Link to="/" className="flex items-center gap-3">
+             <div className="w-14 h-14 bg-[#0d89b1] rounded-full flex items-center justify-center text-white font-bold text-xl">
+               F1
+             </div>
+             <div className="hidden md:block">
+               <div className="text-lg font-bold text-gray-900">FDTU 1-son Akademik</div>
+               <div className="text-sm text-gray-600">Litsey</div>
+             </div>
+           </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-1">

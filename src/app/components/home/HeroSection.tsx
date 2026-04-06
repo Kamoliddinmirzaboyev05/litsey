@@ -26,14 +26,14 @@ export function HeroSection() {
           <div className="flex flex-wrap gap-4 animate-slideUp" style={{animationDelay: '0.2s'}}>
             <Link
               to="/admission"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-[#0d89b1] text-white rounded-lg hover:bg-[#0a6d8f] transition-colors font-semibold shadow-lg"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-[#0d89b1] text-white rounded-lg hover:bg-[#0a6d8f] transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl font-semibold shadow-lg"
             >
               Qabul 2026
               <ChevronRight size={20} />
             </Link>
             <Link
               to="/about"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-white/10 backdrop-blur-sm text-white rounded-lg hover:bg-white/20 transition-colors font-semibold border border-white/30"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-white/10 backdrop-blur-sm text-white rounded-lg hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-1 font-semibold border border-white/30"
             >
               Batafsil ma'lumot
             </Link>
@@ -42,7 +42,7 @@ export function HeroSection() {
       </div>
 
       {/* Decorative Elements */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white dark:from-gray-900 to-transparent"></div>
     </section>
   );
 }
