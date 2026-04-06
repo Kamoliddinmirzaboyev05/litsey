@@ -2,51 +2,40 @@ import { MenuItem } from '../types';
 
 export const menuItems: MenuItem[] = [
   {
-    label: 'Tuzilma',
-    href: '/structure',
+    label: 'nav.home',
+    href: '/',
+  },
+  {
+    label: 'nav.structure',
+    href: '#',
     children: [
-      { label: 'Litsey haqida', href: '/about' },
-      { label: 'Rahbariyat', href: '/leadership' },
-      { label: 'O\'qituvchilar', href: '/teachers' },
+      { label: 'nav.about', href: '/about' },
+      { label: 'nav.leadership', href: '/leadership' },
+      { label: 'nav.teachers', href: '/teachers' },
     ],
   },
   {
-    label: 'Faoliyat',
-    href: '/activity',
+    label: 'nav.activity',
+    href: '#',
     children: [
-      { label: 'Fanlar', href: '/subjects' },
-      { label: 'O\'quv dasturlari', href: '/programs' },
+      { label: 'nav.subjects', href: '/subjects' },
+      { label: 'nav.programs', href: '/programs' },
     ],
   },
   {
-    label: 'Ta\'lim',
-    href: '/education',
+    label: 'nav.education',
+    href: '#',
     children: [
-      { label: 'Dars jadvali', href: '/schedule' },
-      { label: 'Axborot-kutubxona', href: '/library' },
+      { label: 'nav.schedule', href: '/schedule' },
+      { label: 'nav.library', href: '/library' },
     ],
   },
   {
-    label: 'Galereya',
-    href: '/gallery',
-    children: [
-      { label: 'Fotosuratlar', href: '/photos' },
-      { label: 'Video lavhalar', href: '/videos' },
-    ],
-  },
-  {
-    label: 'Qabul',
+    label: 'nav.admission',
     href: '/admission',
-    children: [
-      { label: 'Qabul 2025/2026', href: '/admission' },
-    ],
   },
   {
-    label: 'Bog\'lanish',
+    label: 'nav.contact',
     href: '/contact',
-    children: [
-      { label: 'Manzil', href: '/contact' },
-      { label: 'Direktor ga murojaat', href: '/contact#appeal' },
-    ],
   },
 ];

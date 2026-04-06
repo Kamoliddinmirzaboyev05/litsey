@@ -10,38 +10,42 @@ const iconMap: Record<string, any> = {
 
 export function StatisticsSection() {
   return (
-    <section className="py-20 bg-gradient-to-br from-[#0d89b1] to-[#0a6d8f] relative overflow-hidden">
-      {/* Decorative circles */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2"></div>
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/2"></div>
+    <section className="relative py-24 bg-gray-900 overflow-hidden">
+      {/* Background with overlay */}
+      <div className="absolute inset-0">
+        <img
+          src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx1bml2ZXJzaXR5JTIwYnVpbGRpbmd8ZW58MXx8fHwxNzc1NDU4MzM1fDA&ixlib=rb-4.1.0&q=80&w=1080"
+          alt="Statistika"
+          className="w-full h-full object-cover opacity-20"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0d89b1]/40 to-gray-900"></div>
+      </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Raqamlarda litseymiz
+        <div className="text-center mb-16" data-aos="fade-up">
+          <h2 className="text-3xl md:text-5xl font-black text-white mb-6 uppercase tracking-tight">
+            Statistika
           </h2>
-          <p className="text-white/90 text-lg max-w-2xl mx-auto">
-            Litseymiz yutuqlari va faoliyati statistikasi
+          <p className="text-white/80 text-lg max-w-2xl mx-auto font-bold opacity-90 uppercase tracking-widest">
+            Litsey yutuqlari va faoliyati statistikasi
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {statistics.map((stat) => {
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          {statistics.map((stat, index) => {
             const Icon = iconMap[stat.icon];
             return (
               <div
                 key={stat.id}
-                className="bg-white/10 backdrop-blur-sm rounded-xl p-8 text-center border border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-105"
+                data-aos="fade-up"
+                data-aos-delay={index * 100}
+                className="group bg-white/5 backdrop-blur-md rounded-3xl p-10 text-center border border-white/10 hover:bg-white/10 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl shadow-xl"
               >
-                <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Icon size={32} className="text-white" />
+                <div className="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-[#0d89b1] group-hover:text-white transition-all duration-500 transform group-hover:rotate-6 shadow-inner">
+                  <Icon size={32} className="text-[#0d89b1] group-hover:text-white" />
                 </div>
-                <div className="text-4xl md:text-5xl font-bold text-white mb-2">
-                  {stat.value}
-                </div>
-                <div className="text-white/90 text-lg font-medium">
-                  {stat.label}
-                </div>
+                <div className="text-5xl font-black text-white mb-3 tracking-tighter">{stat.value}</div>
+                <div className="text-xs font-black text-[#0d89b1] uppercase tracking-[0.2em]">{stat.label}</div>
               </div>
             );
           })}

@@ -1,0 +1,38 @@
+{
+  "nav": {
+    "home": "Bosh sahifa",
+    "about": "Litsey haqida",
+    "admission": "Qabul",
+    "news": "Yangiliklar",
+    "teachers": "O'qituvchilar",
+    "contact": "Bog'lanish",
+    "leadership": "Rahbariyat",
+    "structure": "Tuzilma",
+    "activity": "Faoliyat",
+    "subjects": "Fanlar",
+    "programs": "O'quv dasturlari",
+    "education": "Ta'lim",
+    "schedule": "Dars jadvali",
+    "library": "Axborot-kutubxona"
+  },
+  "footer": {
+    "about": "Farg‘ona Davlat Texnika Universiteti 1-son Akademik Litseyi — viloyatdagi eng nufuzli ta'lim muassasalaridan biri.",
+    "quickLinks": "Tezkor havolalar",
+    "contact": "Bog'lanish",
+    "socials": "Ijtimoiy tarmoqlar",
+    "workTime": "Ish vaqti:",
+    "days": "Dushanba - Shanba",
+    "rights": "Barcha huquqlar himoyalangan.",
+    "address": "Farg‘ona sh., Muruvvat MFY, Farg‘ona ko‘chasi, 84-uy"
+  },
+  "home": {
+    "heroTitle": "Farg‘ona Davlat Texnika Universiteti 1-son Akademik Litseyi",
+    "heroDesc": "2000-yildan buyon Farg‘ona viloyatida yetakchi ta'lim muassasasi. FDTU professor-o‘qituvchilari, chuqurlashtirilgan fanlar dasturlari va eng yaxshi sharoitlar bilan sizning kelajagingizni quramiz.",
+    "admissionBtn": "Qabul 2026",
+    "moreBtn": "Batafsil ma'lumot"
+  },
+  "theme": {
+    "light": "Yorug' rejim",
+    "dark": "Tungi rejim"
+  }
+}

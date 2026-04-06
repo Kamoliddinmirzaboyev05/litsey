@@ -24,22 +24,22 @@ export function WhyUsSection() {
     },
     {
       icon: Building2,
-      title: 'TDYU huzurida',
-      description: 'Toshkent davlat yuridik universiteti huzurida faoliyat ko\'rsatish yuqori standartlarni ta\'minlaydi.',
+      title: 'FDTU bilan hamkorlik',
+      description: 'Farg‘ona Davlat Texnika Universiteti bilan yaqin hamkorlik va universitet o\'qituvchilari dars berishi.',
     },
   ];
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-white dark:bg-gray-950 overflow-hidden transition-colors duration-300">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <div className="inline-block px-4 py-2 bg-[#0d89b1]/10 text-[#0d89b1] rounded-full text-sm font-semibold mb-4">
+        <div className="text-center mb-16" data-aos="fade-up">
+          <div className="inline-block px-5 py-2 bg-[#0d89b1]/10 text-[#0d89b1] rounded-full text-xs font-black mb-4 uppercase tracking-[0.2em]">
             BIZNING AFZALLIKLARIMIZ
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl md:text-5xl font-black text-gray-900 dark:text-white mb-6 uppercase tracking-tight">
             Nima uchun aynan biz?
           </h2>
-          <p className="text-gray-600 text-lg max-w-3xl mx-auto">
+          <p className="text-gray-600 dark:text-gray-400 text-lg max-w-3xl mx-auto font-medium">
             Litseymizni tanlash uchun bir necha asosiy sabablarga e'tibor bering
           </p>
         </div>
@@ -50,23 +50,17 @@ export function WhyUsSection() {
             return (
               <div
                 key={index}
-                className="group relative bg-gradient-to-br from-white to-gray-50 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-[#0d89b1]/30"
+                data-aos="fade-up"
+                data-aos-delay={index * 100}
+                className="group relative bg-white dark:bg-gray-900 rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-gray-800 hover:border-[#0d89b1]/30"
               >
-                {/* Icon */}
-                <div className="w-16 h-16 bg-gradient-to-br from-[#0d89b1] to-[#0a6d8f] rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                  <Icon size={32} className="text-white" />
+                <div className="w-16 h-16 bg-[#0d89b1]/10 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-[#0d89b1] group-hover:text-white transition-all duration-500 transform group-hover:rotate-6">
+                  <Icon size={32} className="text-[#0d89b1] group-hover:text-white" />
                 </div>
-
-                {/* Content */}
-                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#0d89b1] transition-colors">
-                  {reason.title}
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
+                <h3 className="text-xl font-black text-gray-900 dark:text-white mb-4 uppercase tracking-wider">{reason.title}</h3>
+                <p className="text-gray-600 dark:text-gray-400 leading-relaxed font-medium">
                   {reason.description}
                 </p>
-
-                {/* Decorative element */}
-                <div className="absolute top-0 right-0 w-20 h-20 bg-[#0d89b1]/5 rounded-bl-full -z-10"></div>
               </div>
             );
           })}
