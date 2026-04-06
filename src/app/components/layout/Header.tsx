@@ -58,9 +58,7 @@ export function Header() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
            <Link to="/" className="flex items-center gap-3">
-             <div className="w-14 h-14 bg-[#0d89b1] rounded-full flex items-center justify-center text-white font-bold text-xl">
-               F1
-             </div>
+             <img src="/logoicon.png" alt="FDTU 1-son AL" className="w-14 h-14 object-contain shadow-md" />
              <div className="hidden md:block">
                <div className="text-lg font-bold text-gray-900">FDTU 1-son Akademik</div>
                <div className="text-sm text-gray-600">Litsey</div>
