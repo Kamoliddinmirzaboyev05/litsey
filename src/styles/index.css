@@ -2,89 +2,34 @@
 @import './tailwind.css';
 @import './theme.css';
 
-/* Scroll Animations */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes slideLeft {
-  from { opacity: 0; transform: translateX(-50px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-
-@keyframes slideRight {
-  from { opacity: 0; transform: translateX(50px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-
-@keyframes scaleUp {
-  from { opacity: 0; transform: scale(0.9); }
-  to { opacity: 1; transform: scale(1); }
-}
-
-.animate-fadeIn {
-  animation: fadeIn 0.7s ease-out forwards;
-}
-
-.animate-slideUp {
-  animation: fadeIn 0.8s ease-out forwards;
-}
-
-.animate-slideLeft {
-  animation: slideLeft 0.7s ease-out forwards;
-}
-
-.animate-slideRight {
-  animation: slideRight 0.7s ease-out forwards;
-}
-
-.animate-scaleUp {
-  animation: scaleUp 0.6s ease-out forwards;
-}
-
-.reveal {
+/* AOS Animation System (Animate On Scroll) */
+[data-aos] {
   opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform: translateY(60px);
+  transition-property: opacity, transform;
+  transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+  transition-duration: 800ms;
 }
 
-.reveal.active {
+[data-aos].aos-animate {
   opacity: 1;
   transform: translateY(0);
 }
 
-.reveal-left {
-  opacity: 0;
-  transform: translateX(-60px);
-  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+/* Mobile Menu Animation */
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
-.reveal-left.active {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.reveal-right {
-  opacity: 0;
-  transform: translateX(60px);
-  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.reveal-right.active {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.reveal-scale {
-  opacity: 0;
-  transform: scale(0.85);
-  transition: all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.reveal-scale.active {
-  opacity: 1;
-  transform: scale(1);
+.mobile-menu-open {
+  animation: slideInRight 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
 /* Smooth scroll */

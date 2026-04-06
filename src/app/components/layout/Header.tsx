@@ -58,9 +58,9 @@ export function Header() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
            <Link to="/" className="flex items-center gap-3">
-             <img src="/logoicon1.png" alt="FDTU 1-son AL" className="w-14 h-14 object-contain" />
+             <img src="/logoicon.png" alt="FDTU 1-son AL" className="w-14 h-14 object-contain" />
              <div className="hidden md:block">
-               <div className="text-lg font-bold text-gray-700">FDTU 1-son Akademik Litseyi</div>
+               <div className="text-lg font-bold text-gray-900">FDTU 1-son Akademik Litseyi</div>
              </div>
            </Link>
 
@@ -117,34 +117,42 @@ export function Header() {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden bg-white border-t">
-          <nav className="container mx-auto px-4 py-4">
-            {menuItems.map((item) => (
-              <div key={item.label} className="mb-2">
-                <Link
-                  to={item.href}
-                  className="block px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-md font-medium"
-                  onClick={() => !item.children && setIsMobileMenuOpen(false)}
-                >
-                  {item.label}
-                </Link>
-                {item.children && (
-                  <div className="pl-4 mt-1 space-y-1">
-                    {item.children.map((child) => (
-                      <Link
-                        key={child.label}
-                        to={child.href}
-                        className="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-100 rounded-md"
-                        onClick={() => setIsMobileMenuOpen(false)}
-                      >
-                        {child.label}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
-            ))}
-          </nav>
+        <div className="lg:hidden fixed inset-0 z-50 bg-black/40" onClick={() => setIsMobileMenuOpen(false)}>
+          <div className="absolute right-0 top-0 h-full w-80 bg-white shadow-2xl mobile-menu-open" onClick={e => e.stopPropagation()}>
+            <div className="flex justify-end p-4">
+              <button onClick={() => setIsMobileMenuOpen(false)} className="p-2 text-gray-700 hover:text-[#0d89b1]">
+                <X size={28} />
+              </button>
+            </div>
+            
+            <nav className="px-6 py-2">
+              {menuItems.map((item) => (
+                <div key={item.label} className="mb-1">
+                  <Link
+                    to={item.href}
+                    className="block px-4 py-3 text-gray-700 hover:bg-[#0d89b1]/10 hover:text-[#0d89b1] rounded-xl font-medium transition-colors"
+                    onClick={() => !item.children && setIsMobileMenuOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                  {item.children && (
+                    <div className="pl-4 mt-1 space-y-1">
+                      {item.children.map((child) => (
+                        <Link
+                          key={child.label}
+                          to={child.href}
+                          className="block px-4 py-2.5 text-gray-600 hover:bg-gray-50 rounded-lg"
+                          onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                          {child.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </nav>
+          </div>
         </div>
       )}
     </header>

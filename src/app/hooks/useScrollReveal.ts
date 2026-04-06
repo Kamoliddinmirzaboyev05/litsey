@@ -1,19 +1,19 @@
 import { useEffect, useRef } from 'react';
 
-export function useScrollReveal(threshold = 0.1) {
+export function useScrollReveal() {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('active');
+          entry.target.classList.add('aos-animate');
           observer.unobserve(entry.target);
         }
       },
       {
-        threshold,
-        rootMargin: '0px 0px -50px 0px'
+        threshold: 0.1,
+        rootMargin: '0px 0px -30px 0px'
       }
     );
 
@@ -26,7 +26,7 @@ export function useScrollReveal(threshold = 0.1) {
         observer.unobserve(ref.current);
       }
     };
-  }, [threshold]);
+  }, []);
 
   return ref;
 }
