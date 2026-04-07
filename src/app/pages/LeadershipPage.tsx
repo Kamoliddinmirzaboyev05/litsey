@@ -30,7 +30,7 @@ export function LeadershipPage() {
               <div
                 key={member.id}
                 data-aos={index % 2 === 0 ? "fade-right" : "fade-left"}
-                className="bg-white dark:bg-gray-950 rounded-[2.5rem] overflow-hidden shadow-2xl hover:shadow-[0_20px_50px_rgba(0,0,0,0.15)] transition-all duration-500 border border-gray-100 dark:border-gray-800 group"
+                className="bg-white dark:bg-gray-950 rounded-lg overflow-hidden shadow-2xl hover:shadow-[0_20px_50px_rgba(0,0,0,0.15)] transition-all duration-500 border border-gray-100 dark:border-gray-800 group"
               >
                 <div className="grid md:grid-cols-3 gap-0">
                   {/* Image */}
@@ -62,7 +62,7 @@ export function LeadershipPage() {
                             href={`tel:${member.phone.replace(/\s/g, '')}`}
                             className="flex items-center gap-6 text-gray-700 dark:text-gray-300 hover:text-[#0d89b1] transition-all group/link"
                           >
-                            <div className="w-14 h-14 bg-[#0d89b1]/10 rounded-2xl flex items-center justify-center group-hover/link:bg-[#0d89b1] group-hover/link:text-white transition-colors duration-500 shadow-inner">
+                            <div className="w-14 h-14 bg-[#0d89b1]/10 rounded-md flex items-center justify-center group-hover/link:bg-[#0d89b1] group-hover/link:text-white transition-colors duration-500 shadow-inner">
                               <Phone size={28} />
                             </div>
                             <span className="text-xl font-black uppercase tracking-tight">{member.phone}</span>
@@ -74,7 +74,7 @@ export function LeadershipPage() {
                             href={`mailto:${member.email}`}
                             className="flex items-center gap-6 text-gray-700 dark:text-gray-300 hover:text-[#0d89b1] transition-all group/link"
                           >
-                            <div className="w-14 h-14 bg-[#0d89b1]/10 rounded-2xl flex items-center justify-center group-hover/link:bg-[#0d89b1] group-hover/link:text-white transition-colors duration-500 shadow-inner">
+                            <div className="w-14 h-14 bg-[#0d89b1]/10 rounded-md flex items-center justify-center group-hover/link:bg-[#0d89b1] group-hover/link:text-white transition-colors duration-500 shadow-inner">
                               <Mail size={28} />
                             </div>
                             <span className="text-xl font-black lowercase tracking-tight">{member.email}</span>
@@ -93,21 +93,21 @@ export function LeadershipPage() {
       {/* Reception Hours */}
       <section className="py-24 bg-white dark:bg-gray-950 transition-colors">
         <div className="container mx-auto px-4">
-          <div className="max-w-5xl mx-auto bg-gray-50 dark:bg-gray-900 rounded-[3rem] p-12 border border-gray-100 dark:border-gray-800 shadow-2xl relative overflow-hidden" data-aos="zoom-in">
+          <div className="max-w-5xl mx-auto bg-gray-50 dark:bg-gray-900 rounded-lg p-12 border border-gray-100 dark:border-gray-800 shadow-2xl relative overflow-hidden" data-aos="zoom-in">
             <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#0d89b1]/5 rounded-full -translate-y-1/2 translate-x-1/2"></div>
             
             <div className="relative z-10">
               <div className="flex items-center gap-6 mb-12">
-                <div className="w-16 h-16 bg-[#0d89b1] rounded-2xl flex items-center justify-center text-white shadow-xl">
+                <div className="w-16 h-16 bg-[#0d89b1] rounded-md flex items-center justify-center text-white shadow-xl">
                   <Clock size={36} />
                 </div>
                 <h2 className="text-3xl md:text-4xl font-black text-gray-900 dark:text-white tracking-tight uppercase">Qabul kunlari</h2>
               </div>
 
               <div className="grid md:grid-cols-2 gap-10">
-                <div className="bg-white dark:bg-gray-950 rounded-[2rem] p-10 border border-gray-100 dark:border-gray-800 shadow-lg hover:shadow-xl transition-all group">
+                <div className="bg-white dark:bg-gray-950 rounded-lg p-10 border border-gray-100 dark:border-gray-800 shadow-lg hover:shadow-xl transition-all group">
                   <div className="flex items-center gap-4 mb-8">
-                    <div className="w-12 h-12 bg-blue-50 dark:bg-blue-900/20 rounded-2xl flex items-center justify-center text-blue-500 group-hover:bg-blue-500 group-hover:text-white transition-all duration-500 shadow-inner">
+                    <div className="w-12 h-12 bg-blue-50 dark:bg-blue-900/20 rounded-md flex items-center justify-center text-blue-500 group-hover:bg-blue-500 group-hover:text-white transition-all duration-500 shadow-inner">
                       <CheckCircle size={24} />
                     </div>
                     <h3 className="text-2xl font-black text-gray-900 dark:text-white uppercase tracking-tight">Direktor qabuli</h3>
@@ -115,15 +115,15 @@ export function LeadershipPage() {
                   <div className="space-y-4">
                     <p className="text-gray-500 dark:text-gray-400 font-black uppercase tracking-widest text-xs">Dushanba - Juma</p>
                     <p className="text-[#0d89b1] font-black text-4xl tracking-tighter">14:00 - 17:00</p>
-                    <p className="text-sm text-gray-500 dark:text-gray-400 italic mt-6 bg-gray-50 dark:bg-gray-900 p-4 rounded-2xl border-l-4 border-[#0d89b1] font-bold">
+                    <p className="text-sm text-gray-500 dark:text-gray-400 italic mt-6 bg-gray-50 dark:bg-gray-900 p-4 rounded-md border-l-4 border-[#0d89b1] font-bold">
                       * Oldindan telefon orqali vaqt belgilash tavsiya etiladi
                     </p>
                   </div>
                 </div>
 
-                <div className="bg-white dark:bg-gray-950 rounded-[2rem] p-10 border border-gray-100 dark:border-gray-800 shadow-lg hover:shadow-xl transition-all group">
+                <div className="bg-white dark:bg-gray-950 rounded-lg p-10 border border-gray-100 dark:border-gray-800 shadow-lg hover:shadow-xl transition-all group">
                   <div className="flex items-center gap-4 mb-8">
-                    <div className="w-12 h-12 bg-blue-50 dark:bg-blue-900/20 rounded-2xl flex items-center justify-center text-blue-500 group-hover:bg-blue-500 group-hover:text-white transition-all duration-500 shadow-inner">
+                    <div className="w-12 h-12 bg-blue-50 dark:bg-blue-900/20 rounded-md flex items-center justify-center text-blue-500 group-hover:bg-blue-500 group-hover:text-white transition-all duration-500 shadow-inner">
                       <CheckCircle size={24} />
                     </div>
                     <h3 className="text-2xl font-black text-gray-900 dark:text-white uppercase tracking-tight">O'quv bo'limi</h3>

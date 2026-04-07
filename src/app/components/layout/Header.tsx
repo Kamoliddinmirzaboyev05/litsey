@@ -104,7 +104,7 @@ export function Header() {
                 </div>
               </div>
 
-              {/* Theme Switcher */}
+              {/* Theme Switcher 
               {mounted && (
                 <button
                   onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
@@ -113,6 +113,7 @@ export function Header() {
                   {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
                 </button>
               )}
+              */}
 
               <div className="flex items-center gap-4 border-l border-white/20 pl-6">
                 <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
@@ -194,6 +195,7 @@ export function Header() {
 
           {/* Mobile Actions */}
           <div className="flex items-center gap-2 lg:hidden">
+            {/* Theme Switcher 
             {mounted && (
               <button
                 onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
@@ -202,6 +204,7 @@ export function Header() {
                 {theme === 'dark' ? <Sun size={24} /> : <Moon size={24} />}
               </button>
             )}
+            */}
             <button
               onClick={() => setIsMobileMenuOpen(true)}
               className="p-2 text-gray-700 dark:text-gray-300 hover:text-[#0d89b1] hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg"

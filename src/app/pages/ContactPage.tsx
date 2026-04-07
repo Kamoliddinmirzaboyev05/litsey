@@ -54,8 +54,8 @@ export function ContactPage() {
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-3 gap-8 mb-16">
             {/* Contact Cards */}
-            <div className="bg-white dark:bg-gray-950 rounded-[2.5rem] p-10 shadow-lg border border-gray-100 dark:border-gray-800 group hover:shadow-2xl transition-all duration-500 hover:-translate-y-2" data-aos="fade-up">
-              <div className="w-16 h-16 bg-[#0d89b1]/10 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-[#0d89b1] group-hover:text-white transition-all duration-500 transform group-hover:rotate-6">
+            <div className="bg-white dark:bg-gray-950 rounded-lg p-10 shadow-lg border border-gray-100 dark:border-gray-800 group hover:shadow-2xl transition-all duration-500 hover:-translate-y-2" data-aos="fade-up">
+              <div className="w-16 h-16 bg-[#0d89b1]/10 rounded-md flex items-center justify-center mb-8 group-hover:bg-[#0d89b1] group-hover:text-white transition-all duration-500 transform group-hover:rotate-6">
                 <MapPin size={32} className="text-[#0d89b1] group-hover:text-white" />
               </div>
               <h3 className="text-2xl font-black text-gray-900 dark:text-white mb-4 uppercase tracking-tight">Manzil</h3>
@@ -65,8 +65,8 @@ export function ContactPage() {
               </p>
             </div>
 
-            <div className="bg-white dark:bg-gray-950 rounded-[2.5rem] p-10 shadow-lg border border-gray-100 dark:border-gray-800 group hover:shadow-2xl transition-all duration-500 hover:-translate-y-2" data-aos="fade-up" data-aos-delay="100">
-              <div className="w-16 h-16 bg-[#0d89b1]/10 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-[#0d89b1] group-hover:text-white transition-all duration-500 transform group-hover:rotate-6">
+            <div className="bg-white dark:bg-gray-950 rounded-lg p-10 shadow-lg border border-gray-100 dark:border-gray-800 group hover:shadow-2xl transition-all duration-500 hover:-translate-y-2" data-aos="fade-up" data-aos-delay="100">
+              <div className="w-16 h-16 bg-[#0d89b1]/10 rounded-md flex items-center justify-center mb-8 group-hover:bg-[#0d89b1] group-hover:text-white transition-all duration-500 transform group-hover:rotate-6">
                 <Phone size={32} className="text-[#0d89b1] group-hover:text-white" />
               </div>
               <h3 className="text-2xl font-black text-gray-900 dark:text-white mb-4 uppercase tracking-tight">Telefon</h3>
@@ -80,8 +80,8 @@ export function ContactPage() {
               </div>
             </div>
 
-            <div className="bg-white dark:bg-gray-950 rounded-[2.5rem] p-10 shadow-lg border border-gray-100 dark:border-gray-800 group hover:shadow-2xl transition-all duration-500 hover:-translate-y-2" data-aos="fade-up" data-aos-delay="200">
-              <div className="w-16 h-16 bg-[#0d89b1]/10 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-[#0d89b1] group-hover:text-white transition-all duration-500 transform group-hover:rotate-6">
+            <div className="bg-white dark:bg-gray-950 rounded-lg p-10 shadow-lg border border-gray-100 dark:border-gray-800 group hover:shadow-2xl transition-all duration-500 hover:-translate-y-2" data-aos="fade-up" data-aos-delay="200">
+              <div className="w-16 h-16 bg-[#0d89b1]/10 rounded-md flex items-center justify-center mb-8 group-hover:bg-[#0d89b1] group-hover:text-white transition-all duration-500 transform group-hover:rotate-6">
                 <Mail size={32} className="text-[#0d89b1] group-hover:text-white" />
               </div>
               <h3 className="text-2xl font-black text-gray-900 dark:text-white mb-4 uppercase tracking-tight">Email & Ijtimoiy</h3>
@@ -96,7 +96,7 @@ export function ContactPage() {
                   { icon: Send, href: "https://t.me/fdtu1al_uz", color: "text-blue-500", hover: "hover:bg-blue-500" },
                   { icon: Facebook, href: "https://facebook.com", color: "text-blue-700", hover: "hover:bg-blue-700" }
                 ].map((social, idx) => (
-                  <a key={idx} href={social.href} target="_blank" rel="noopener noreferrer" className={`w-12 h-12 bg-gray-50 dark:bg-gray-900 rounded-2xl flex items-center justify-center ${social.color} ${social.hover} hover:text-white transition-all shadow-inner`}>
+                  <a key={idx} href={social.href} target="_blank" rel="noopener noreferrer" className={`w-12 h-12 bg-gray-50 dark:bg-gray-900 rounded-md flex items-center justify-center ${social.color} ${social.hover} hover:text-white transition-all shadow-inner`}>
                     <social.icon size={24} />
                   </a>
                 ))}
@@ -106,14 +106,14 @@ export function ContactPage() {
 
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Contact Form */}
-            <div className="bg-white dark:bg-gray-950 rounded-[3rem] p-12 shadow-2xl border border-gray-100 dark:border-gray-800" data-aos="fade-right">
+            <div className="bg-white dark:bg-gray-950 rounded-lg p-12 shadow-2xl border border-gray-100 dark:border-gray-800" data-aos="fade-right">
               <h2 className="text-3xl md:text-4xl font-black text-gray-900 dark:text-white mb-10 uppercase tracking-tight">Xabar yuborish</h2>
               
               {submitted && (
                 <motion.div 
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: 'auto' }}
-                  className="mb-10 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-900/30 rounded-2xl p-6 text-green-700 dark:text-green-400 font-black flex items-center gap-4 shadow-inner"
+                  className="mb-10 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-900/30 rounded-lg p-6 text-green-700 dark:text-green-400 font-black flex items-center gap-4 shadow-inner"
                 >
                   <CheckCircle size={28} />
                   Xabaringiz muvaffaqiyatli yuborildi! Tez orada siz bilan bog'lanamiz.
@@ -133,7 +133,7 @@ export function ContactPage() {
                       required
                       value={formData.name}
                       onChange={handleChange}
-                      className="w-full px-6 py-5 bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-2xl focus:ring-4 focus:ring-[#0d89b1]/10 focus:border-[#0d89b1] outline-none transition-all font-bold text-gray-900 dark:text-white shadow-inner"
+                      className="w-full px-6 py-5 bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-lg focus:ring-4 focus:ring-[#0d89b1]/10 focus:border-[#0d89b1] outline-none transition-all font-bold text-gray-900 dark:text-white shadow-inner"
                       placeholder="To'liq ismingiz"
                     />
                   </div>
@@ -148,7 +148,7 @@ export function ContactPage() {
                       required
                       value={formData.phone}
                       onChange={handleChange}
-                      className="w-full px-6 py-5 bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-2xl focus:ring-4 focus:ring-[#0d89b1]/10 focus:border-[#0d89b1] outline-none transition-all font-bold text-gray-900 dark:text-white shadow-inner"
+                      className="w-full px-6 py-5 bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-lg focus:ring-4 focus:ring-[#0d89b1]/10 focus:border-[#0d89b1] outline-none transition-all font-bold text-gray-900 dark:text-white shadow-inner"
                       placeholder="+998 90 123 45 67"
                     />
                   </div>
@@ -164,7 +164,7 @@ export function ContactPage() {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-6 py-5 bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-2xl focus:ring-4 focus:ring-[#0d89b1]/10 focus:border-[#0d89b1] outline-none transition-all font-bold text-gray-900 dark:text-white shadow-inner"
+                    className="w-full px-6 py-5 bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-lg focus:ring-4 focus:ring-[#0d89b1]/10 focus:border-[#0d89b1] outline-none transition-all font-bold text-gray-900 dark:text-white shadow-inner"
                     placeholder="example@mail.com"
                   />
                 </div>
@@ -179,7 +179,7 @@ export function ContactPage() {
                     required
                     value={formData.subject}
                     onChange={handleChange}
-                    className="w-full px-6 py-5 bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-2xl focus:ring-4 focus:ring-[#0d89b1]/10 focus:border-[#0d89b1] outline-none transition-all font-black text-gray-700 dark:text-gray-300 shadow-inner"
+                    className="w-full px-6 py-5 bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-lg focus:ring-4 focus:ring-[#0d89b1]/10 focus:border-[#0d89b1] outline-none transition-all font-black text-gray-700 dark:text-gray-300 shadow-inner"
                   >
                     <option value="">Mavzuni tanlang</option>
                     <option value="admission">Qabul haqida</option>
@@ -199,14 +199,14 @@ export function ContactPage() {
                     value={formData.message}
                     onChange={handleChange}
                     rows={5}
-                    className="w-full px-6 py-5 bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-2xl focus:ring-4 focus:ring-[#0d89b1]/10 focus:border-[#0d89b1] outline-none transition-all resize-none font-bold text-gray-900 dark:text-white shadow-inner"
+                    className="w-full px-6 py-5 bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-lg focus:ring-4 focus:ring-[#0d89b1]/10 focus:border-[#0d89b1] outline-none transition-all resize-none font-bold text-gray-900 dark:text-white shadow-inner"
                     placeholder="Xabaringizni yozing..."
                   ></textarea>
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full flex items-center justify-center gap-4 px-10 py-6 bg-[#0d89b1] text-white rounded-[2rem] hover:bg-[#0a6d8f] transition-all font-black shadow-2xl hover:shadow-[#0d89b1]/40 transform hover:-translate-y-1 uppercase tracking-[0.2em] text-sm"
+                  className="w-full flex items-center justify-center gap-4 px-10 py-6 bg-[#0d89b1] text-white rounded-lg hover:bg-[#0a6d8f] transition-all font-black shadow-2xl hover:shadow-[#0d89b1]/40 transform hover:-translate-y-1 uppercase tracking-[0.2em] text-sm"
                 >
                   <Send size={28} />
                   XABAR YUBORISH
@@ -216,7 +216,7 @@ export function ContactPage() {
 
             {/* Working Hours & Map */}
             <div className="space-y-10" data-aos="fade-left">
-              <div className="bg-white dark:bg-gray-950 rounded-[3rem] p-12 shadow-2xl border border-gray-100 dark:border-gray-800">
+              <div className="bg-white dark:bg-gray-950 rounded-lg p-12 shadow-2xl border border-gray-100 dark:border-gray-800">
                 <div className="flex items-center gap-6 mb-10">
                   <div className="w-14 h-14 bg-[#0d89b1]/10 rounded-2xl flex items-center justify-center text-[#0d89b1] shadow-inner">
                     <Clock size={32} />
@@ -240,7 +240,7 @@ export function ContactPage() {
               </div>
 
               {/* Map */}
-              <div className="bg-white dark:bg-gray-950 rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white dark:border-gray-800 h-[450px] grayscale hover:grayscale-0 transition-all duration-700">
+              <div className="bg-white dark:bg-gray-950 rounded-lg overflow-hidden shadow-2xl border-4 border-white dark:border-gray-800 h-[450px] grayscale hover:grayscale-0 transition-all duration-700">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3037.1234567890123!2d71.77196941208126!3d40.42417922132789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDI1JzI3LjAiTiA3McKwNDYnMTkuMSJF!5e0!3m2!1sen!2s!4v1647000000000!5m2!1sen!2s"
                   width="100%"

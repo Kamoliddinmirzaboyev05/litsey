@@ -52,9 +52,9 @@ export function WhyUsSection() {
                 key={index}
                 data-aos="fade-up"
                 data-aos-delay={index * 100}
-                className="group relative bg-white dark:bg-gray-900 rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-gray-800 hover:border-[#0d89b1]/30"
+                className="group relative bg-white dark:bg-gray-900 rounded-lg p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-gray-800 hover:border-[#0d89b1]/30"
               >
-                <div className="w-16 h-16 bg-[#0d89b1]/10 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-[#0d89b1] group-hover:text-white transition-all duration-500 transform group-hover:rotate-6">
+                <div className="w-16 h-16 bg-[#0d89b1]/10 rounded-md flex items-center justify-center mb-8 group-hover:bg-[#0d89b1] group-hover:text-white transition-all duration-500 transform group-hover:rotate-6">
                   <Icon size={32} className="text-[#0d89b1] group-hover:text-white" />
                 </div>
                 <h3 className="text-xl font-black text-gray-900 dark:text-white mb-4 uppercase tracking-wider">{reason.title}</h3>

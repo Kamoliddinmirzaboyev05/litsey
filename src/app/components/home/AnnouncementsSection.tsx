@@ -30,14 +30,14 @@ export function AnnouncementsSection() {
               key={announcement.id}
               data-aos="fade-up"
               data-aos-delay={index * 100}
-              className="group bg-gradient-to-br from-[#0d89b1] to-[#0a6d8f] rounded-3xl p-8 text-white shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 relative overflow-hidden"
+              className="group bg-gradient-to-br from-[#0d89b1] to-[#0a6d8f] rounded-lg p-8 text-white shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 relative overflow-hidden"
             >
               {/* Decorative element */}
               <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-bl-full -z-0 group-hover:scale-110 transition-transform duration-500"></div>
               
               <div className="relative z-10">
                 <div className="flex items-start justify-between mb-6">
-                  <div className="w-14 h-14 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center shadow-inner group-hover:bg-white group-hover:text-[#0d89b1] transition-all duration-300">
+                  <div className="w-14 h-14 bg-white/20 backdrop-blur-md rounded-md flex items-center justify-center shadow-inner group-hover:bg-white group-hover:text-[#0d89b1] transition-all duration-300">
                     <Megaphone size={28} />
                   </div>
                   <div className="flex items-center gap-2 text-[10px] font-black bg-white/20 backdrop-blur-md px-4 py-2 rounded-full uppercase tracking-[0.2em] border border-white/10">
@@ -56,7 +56,7 @@ export function AnnouncementsSection() {
 
                 <Link
                   to={`/announcements/${announcement.slug}`}
-                  className="inline-flex items-center gap-2 font-black uppercase tracking-[0.2em] text-xs hover:gap-4 transition-all group/link bg-white/10 hover:bg-white hover:text-[#0d89b1] px-6 py-3 rounded-xl backdrop-blur-sm"
+                  className="inline-flex items-center gap-2 font-black uppercase tracking-[0.2em] text-xs hover:gap-4 transition-all group/link bg-white/10 hover:bg-white hover:text-[#0d89b1] px-6 py-3 rounded-md backdrop-blur-sm"
                 >
                   Batafsil
                   <ArrowRight size={20} className="group-hover/link:translate-x-1 transition-transform" />

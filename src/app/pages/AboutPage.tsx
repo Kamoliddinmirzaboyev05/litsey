@@ -101,10 +101,10 @@ export function AboutPage() {
                   key={index} 
                   data-aos="fade-up"
                   data-aos-delay={index * 100}
-                  className="bg-white dark:bg-gray-950 rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 dark:border-gray-800 group hover:-translate-y-2"
+                  className="bg-white dark:bg-gray-950 rounded-lg p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 dark:border-gray-800 group hover:-translate-y-2"
                 >
                   <div className="flex items-start gap-6">
-                    <div className="w-16 h-16 bg-[#0d89b1]/10 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:bg-[#0d89b1] group-hover:text-white transition-all duration-500 transform group-hover:rotate-6">
+                    <div className="w-16 h-16 bg-[#0d89b1]/10 rounded-md flex items-center justify-center flex-shrink-0 group-hover:bg-[#0d89b1] group-hover:text-white transition-all duration-500 transform group-hover:rotate-6">
                       <Icon size={32} className="text-[#0d89b1] group-hover:text-white" />
                     </div>
                     <div>
@@ -140,14 +140,14 @@ export function AboutPage() {
                 </div>
               </div>
               <div className="relative" data-aos="fade-left">
-                <div className="rounded-3xl overflow-hidden shadow-2xl border-4 border-white dark:border-gray-800">
+                <div className="rounded-lg overflow-hidden shadow-2xl border-4 border-white dark:border-gray-800">
                   <img 
                     src="https://avatars.mds.yandex.net/get-altay/3511135/2a000001794953509e5d099beac03556466a/L_height" 
                     alt="Litsey tarixi" 
                     className="w-full h-[600px] object-cover hover:scale-105 transition-transform duration-700"
                   />
                 </div>
-                <div className="absolute -bottom-10 z-10 -left-10 w-64 h-64 bg-[#0d89b1] rounded-3xl  opacity-30"></div>
+                <div className="absolute -bottom-10 z-10 -left-10 w-64 h-64 bg-[#0d89b1] rounded-lg  opacity-30"></div>
               </div>
             </div>
           </div>
@@ -172,9 +172,9 @@ export function AboutPage() {
                   key={index} 
                   data-aos="fade-up"
                   data-aos-delay={index * 150}
-                  className="bg-white dark:bg-gray-950 rounded-[2.5rem] p-12 shadow-xl text-center hover:shadow-2xl transition-all duration-500 border border-gray-100 dark:border-gray-800 group hover:-translate-y-2"
+                  className="bg-white dark:bg-gray-950 rounded-lg p-12 shadow-xl text-center hover:shadow-2xl transition-all duration-500 border border-gray-100 dark:border-gray-800 group hover:-translate-y-2"
                 >
-                  <div className="w-24 h-24 bg-gradient-to-br from-[#0d89b1] to-[#0a6d8f] rounded-3xl flex items-center justify-center mx-auto mb-10 transform group-hover:rotate-12 transition-transform shadow-lg">
+                  <div className="w-24 h-24 bg-gradient-to-br from-[#0d89b1] to-[#0a6d8f] rounded-lg flex items-center justify-center mx-auto mb-10 transform group-hover:rotate-12 transition-transform shadow-lg">
                     <Icon size={44} className="text-white" />
                   </div>
                   <h3 className="text-2xl font-black text-gray-900 dark:text-white mb-6 uppercase tracking-wider leading-tight">{value.title}</h3>

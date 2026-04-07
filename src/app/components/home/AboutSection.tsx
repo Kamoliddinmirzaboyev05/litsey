@@ -31,14 +31,14 @@ export function AboutSection() {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left: Image */}
           <div className="relative" data-aos="fade-right">
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+            <div className="relative rounded-lg overflow-hidden shadow-2xl">
               <img
                 src="https://images.unsplash.com/photo-1606761568499-6d2451b23c66?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzdHVkZW50cyUyMHN0dWR5aW5nJTIwY2xhc3Nyb29tfGVufDF8fHx8MTc3NTM1NzM2Nnww&ixlib=rb-4.1.0&q=80&w=1080"
                 alt="O'quvchilar"
                 className="w-full h-[500px] object-cover hover:scale-105 transition-transform duration-700"
               />
             </div>
-            <div className="absolute -bottom-6 -right-6 w-48 h-48 bg-[#0d89b1] rounded-2xl flex items-center justify-center shadow-xl border-4 border-white dark:border-gray-800">
+            <div className="absolute -bottom-6 -right-6 w-48 h-48 bg-[#0d89b1] rounded-lg flex items-center justify-center shadow-xl border-4 border-white dark:border-gray-800">
               <div className="text-center text-white">
                 <div className="text-5xl font-black mb-2 tracking-tighter">26+</div>
                 <div className="text-xs font-black uppercase tracking-[0.2em] opacity-80">Yillik tajriba</div>
@@ -67,7 +67,7 @@ export function AboutSection() {
                 return (
                   <div key={index} className="flex gap-5 group">
                     <div className="flex-shrink-0">
-                      <div className="w-14 h-14 bg-white dark:bg-gray-800 shadow-lg group-hover:bg-[#0d89b1] group-hover:text-white rounded-2xl flex items-center justify-center transition-all duration-300 transform group-hover:rotate-6">
+                      <div className="w-14 h-14 bg-white dark:bg-gray-800 shadow-lg group-hover:bg-[#0d89b1] group-hover:text-white rounded-md flex items-center justify-center transition-all duration-300 transform group-hover:rotate-6">
                         <Icon size={26} className="text-[#0d89b1] group-hover:text-white" />
                       </div>
                     </div>
@@ -82,7 +82,7 @@ export function AboutSection() {
 
             <Link
               to="/about"
-              className="inline-flex items-center gap-3 px-10 py-5 bg-[#0d89b1] text-white rounded-2xl hover:bg-[#0a6d8f] transition-all duration-300 font-black uppercase tracking-widest shadow-xl hover:shadow-2xl transform hover:-translate-y-1"
+              className="inline-flex items-center gap-3 px-10 py-5 bg-[#0d89b1] text-white rounded-lg hover:bg-[#0a6d8f] transition-all duration-300 font-black uppercase tracking-widest shadow-xl hover:shadow-2xl transform hover:-translate-y-1"
             >
               Batafsil ma'lumot
             </Link>

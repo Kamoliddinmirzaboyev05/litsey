@@ -52,9 +52,9 @@ export function StatisticsSection() {
                 key={stat.id}
                 data-aos="fade-up"
                 data-aos-delay={index * 100}
-                className="group bg-white/5 backdrop-blur-md rounded-3xl p-10 text-center border border-white/10 hover:bg-white/10 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl shadow-xl"
+                className="group bg-white/5 backdrop-blur-md rounded-lg p-10 text-center border border-white/10 hover:bg-white/10 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl shadow-xl"
               >
-                <div className="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-[#0d89b1] group-hover:text-white transition-all duration-500 transform group-hover:rotate-6 shadow-inner">
+                <div className="w-16 h-16 bg-white/10 rounded-md flex items-center justify-center mx-auto mb-6 group-hover:bg-[#0d89b1] group-hover:text-white transition-all duration-500 transform group-hover:rotate-6 shadow-inner">
                   <Icon size={32} className="text-[#0d89b1] group-hover:text-white" />
                 </div>
                 <div className="text-5xl font-black text-white mb-3 tracking-tighter">

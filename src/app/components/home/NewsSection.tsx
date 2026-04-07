@@ -30,7 +30,7 @@ export function NewsSection() {
               key={news.id}
               data-aos="fade-up"
               data-aos-delay={index * 100}
-              className="bg-white dark:bg-gray-950 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 group border border-gray-100 dark:border-gray-800"
+              className="bg-white dark:bg-gray-950 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 group border border-gray-100 dark:border-gray-800"
             >
               <div className="relative h-64 overflow-hidden">
                 <img

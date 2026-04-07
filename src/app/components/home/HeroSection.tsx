@@ -40,14 +40,14 @@ export function HeroSection() {
           >
             <Link
               to="/admission"
-              className="inline-flex items-center gap-3 px-10 py-5 bg-[#0d89b1] text-white rounded-2xl hover:bg-[#0a6d8f] transition-all duration-300 transform hover:-translate-y-1 hover:shadow-2xl font-black uppercase tracking-widest shadow-xl"
+              className="inline-flex items-center gap-3 px-10 py-5 bg-[#0d89b1] text-white rounded-lg hover:bg-[#0a6d8f] transition-all duration-300 transform hover:-translate-y-1 hover:shadow-2xl font-black uppercase tracking-widest shadow-xl"
             >
               {t('home.admissionBtn')}
               <ChevronRight size={24} />
             </Link>
             <Link
               to="/about"
-              className="inline-flex items-center gap-3 px-10 py-5 bg-white/10 backdrop-blur-md text-white rounded-2xl hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-1 font-black uppercase tracking-widest border border-white/20"
+              className="inline-flex items-center gap-3 px-10 py-5 bg-white/10 backdrop-blur-md text-white rounded-lg hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-1 font-black uppercase tracking-widest border border-white/20"
             >
               {t('home.moreBtn')}
             </Link>

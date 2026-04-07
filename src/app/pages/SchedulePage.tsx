@@ -29,7 +29,7 @@ export function SchedulePage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             {/* Info Card */}
-            <div className="bg-blue-50 border border-blue-200 rounded-2xl p-6 mb-8">
+            <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-8">
               <div className="flex items-start gap-4">
                 <Calendar className="text-blue-600 flex-shrink-0" size={24} />
                 <div>
@@ -43,7 +43,7 @@ export function SchedulePage() {
             </div>
 
             {/* Time Table */}
-            <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+            <div className="bg-white rounded-lg shadow-lg overflow-hidden">
               <div className="bg-gradient-to-r from-[#0d89b1] to-[#0a6d8f] p-6 text-white">
                 <div className="flex items-center gap-3">
                   <Clock size={28} />
@@ -56,7 +56,7 @@ export function SchedulePage() {
                   {schedule.map((item, index) => (
                     <div
                       key={index}
-                      className={`flex items-center justify-between p-4 rounded-xl ${
+                      className={`flex items-center justify-between p-4 rounded-md ${
                         item.class.includes('Tanaffus')
                           ? 'bg-yellow-50 border border-yellow-200'
                           : 'bg-gray-50 border border-gray-200'
