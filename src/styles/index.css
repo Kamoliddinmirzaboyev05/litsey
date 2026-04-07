@@ -40,3 +40,15 @@ html {
 * {
   scroll-margin-top: 100px;
 }
+
+/* Barcha elementlar uchun silliq transition */
+*, *::before, *::after {
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Card hover animatsiyalari uchun global optimizatsiya */
+[class*="group"]:hover * {
+  transition-duration: inherit;
+  transition-timing-function: inherit;
+}
