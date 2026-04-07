@@ -34,5 +34,14 @@
   "theme": {
     "light": "Light Mode",
     "dark": "Dark Mode"
+  },
+  "common": {
+    "language": "Language"
+  },
+  "statistics": {
+    "students": "Students",
+    "teachers": "Teachers",
+    "clubs": "Clubs",
+    "rooms": "Classrooms"
   }
 }

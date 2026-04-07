@@ -34,5 +34,14 @@
   "theme": {
     "light": "Yorug' rejim",
     "dark": "Tungi rejim"
+  },
+  "common": {
+    "language": "Tashrif tili"
+  },
+  "statistics": {
+    "students": "O'quvchilar",
+    "teachers": "O'qituvchilar",
+    "clubs": "To'garaklar",
+    "rooms": "Sinfxonalar"
   }
 }

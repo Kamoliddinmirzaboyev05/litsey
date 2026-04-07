@@ -4,25 +4,25 @@ export const statistics: StatItem[] = [
   {
     id: 1,
     value: '450+',
-    label: 'O\'quvchilar',
+    label: 'statistics.students',
     icon: 'users',
   },
   {
     id: 2,
     value: '45+',
-    label: 'O\'qituvchilar',
+    label: 'statistics.teachers',
     icon: 'graduation-cap',
   },
   {
     id: 3,
     value: '25+',
-    label: 'To\'garaklar',
+    label: 'statistics.clubs',
     icon: 'trophy',
   },
   {
     id: 4,
     value: '15',
-    label: 'Sinfonalar',
+    label: 'statistics.rooms',
     icon: 'school',
   },
 ];

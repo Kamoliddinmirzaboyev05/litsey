@@ -17,6 +17,7 @@ i18n
       en: { translation: en },
       kr: { translation: kr },
     },
+    lng: 'uz', // Set default language explicitly to Uzbek
     fallbackLng: 'uz',
     interpolation: {
       escapeValue: false,

@@ -34,5 +34,14 @@
   "theme": {
     "light": "Светлый режим",
     "dark": "Темный режим"
+  },
+  "common": {
+    "language": "Язык интерфейса"
+  },
+  "statistics": {
+    "students": "Ученики",
+    "teachers": "Учителя",
+    "clubs": "Кружки",
+    "rooms": "Классы"
   }
 }

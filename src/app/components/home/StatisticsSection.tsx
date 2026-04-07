@@ -1,5 +1,8 @@
 import { Users, GraduationCap, Trophy, School } from 'lucide-react';
 import { statistics } from '../../data/statistics';
+import CountUp from 'react-countup';
+import { useInView } from 'react-intersection-observer';
+import { useTranslation } from 'react-i18next';
 
 const iconMap: Record<string, any> = {
   users: Users,
@@ -9,8 +12,14 @@ const iconMap: Record<string, any> = {
 };
 
 export function StatisticsSection() {
+  const { t } = useTranslation();
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
   return (
-    <section className="relative py-24 bg-gray-900 overflow-hidden">
+    <section className="relative py-24 bg-gray-900 overflow-hidden" ref={ref}>
       {/* Background with overlay */}
       <div className="absolute inset-0">
         <img
@@ -34,6 +43,10 @@ export function StatisticsSection() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {statistics.map((stat, index) => {
             const Icon = iconMap[stat.icon];
+            // Extract numeric value from string (e.g., "450+" -> 450)
+            const numericValue = parseInt(stat.value.replace(/\D/g, ''));
+            const suffix = stat.value.replace(/[0-9]/g, '');
+
             return (
               <div
                 key={stat.id}
@@ -44,8 +57,14 @@ export function StatisticsSection() {
                 <div className="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-[#0d89b1] group-hover:text-white transition-all duration-500 transform group-hover:rotate-6 shadow-inner">
                   <Icon size={32} className="text-[#0d89b1] group-hover:text-white" />
                 </div>
-                <div className="text-5xl font-black text-white mb-3 tracking-tighter">{stat.value}</div>
-                <div className="text-xs font-black text-[#0d89b1] uppercase tracking-[0.2em]">{stat.label}</div>
+                <div className="text-5xl font-black text-white mb-3 tracking-tighter">
+                  {inView ? (
+                    <CountUp end={numericValue} duration={2.5} suffix={suffix} />
+                  ) : (
+                    '0'
+                  )}
+                </div>
+                <div className="text-xs font-black text-[#0d89b1] uppercase tracking-[0.2em]">{t(stat.label)}</div>
               </div>
             );
           })}
