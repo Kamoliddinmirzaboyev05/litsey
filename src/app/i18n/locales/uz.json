@@ -36,7 +36,10 @@
     "dark": "Tungi rejim"
   },
   "common": {
-    "language": "Tashrif tili"
+    "language": "Tashrif tili",
+    "loadMore": "Yana yuklash",
+    "views": "ko'rildi",
+    "notFound": "Ma'lumot topilmadi"
   },
   "statistics": {
     "students": "O'quvchilar",

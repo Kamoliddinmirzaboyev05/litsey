@@ -36,7 +36,10 @@
     "dark": "Тунги режим"
   },
   "common": {
-    "language": "Ташриф тили"
+    "language": "Ташриф тили",
+    "loadMore": "Яна юклаш",
+    "views": "кўрилди",
+    "notFound": "Маълумот топилмади"
   },
   "statistics": {
     "students": "Ўқувчилар",

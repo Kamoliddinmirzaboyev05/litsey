@@ -1,10 +1,34 @@
+export interface NewsTranslation {
+  title: string;
+  short_description: string;
+  content: string;
+}
+
 export interface NewsItem {
   id: number;
-  title: string;
-  date: string;
-  image: string;
-  excerpt: string;
   slug: string;
+  translations: {
+    uz: NewsTranslation;
+    uz_cyrl: NewsTranslation;
+    ru: NewsTranslation;
+    en: NewsTranslation;
+  };
+  image: string;
+  views_count: number;
+  status: string;
+  status_display: string;
+  is_featured: boolean;
+  published_at: string;
+  created_at: string;
+  updated_at: string;
+  created_by: string;
+}
+
+export interface NewsResponse {
+  count: number;
+  next: string | null;
+  previous: string | null;
+  results: NewsItem[];
 }
 
 export interface Announcement {

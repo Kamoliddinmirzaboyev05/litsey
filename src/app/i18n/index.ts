@@ -4,7 +4,6 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 
 import uz from './locales/uz.json';
 import ru from './locales/ru.json';
-import en from './locales/en.json';
 import kr from './locales/kr.json';
 
 i18n
@@ -14,7 +13,6 @@ i18n
     resources: {
       uz: { translation: uz },
       ru: { translation: ru },
-      en: { translation: en },
       kr: { translation: kr },
     },
     lng: 'uz', // Set default language explicitly to Uzbek

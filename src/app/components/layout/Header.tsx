@@ -35,7 +35,6 @@ export function Header() {
   const languages = [
     { code: 'uz', label: "O'zbek", flag: 'uz' },
     { code: 'ru', label: 'Русский', flag: 'ru' },
-    { code: 'en', label: 'English', flag: 'gb' },
     { code: 'kr', label: 'Ўзбекча', flag: 'uz' },
   ];
 
