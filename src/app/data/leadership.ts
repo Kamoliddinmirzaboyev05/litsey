@@ -2,27 +2,69 @@ import { LeadershipMember } from '../types';
 
 export const leadershipData: LeadershipMember[] = [
   {
-    id: 1,
-    name: 'Boltaboyev Ikboljon Tursunalievich',
-    position: 'Litsey direktori',
-    image: 'https://images.unsplash.com/photo-1667569212544-cafa2b6a630a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzY2hvb2wlMjBwcmluY2lwYWwlMjBwb3J0cmFpdHxlbnwxfHx8fDE3NzU0NTg1NzJ8MA&ixlib=rb-4.1.0&q=80&w=1080',
-    phone: '+99873 241-33-07',
-    email: 'info@fdtu1al.uz',
+    "id": 3,
+    "full_name": "Salimjon Olimov",
+    "translations": {
+      "uz": {
+        "position": "asda",
+        "bio": "asda",
+        "reception_hours": "asdad"
+      },
+      "ru": {
+        "position": "asdad",
+        "bio": "dasda",
+        "reception_hours": "asda"
+      }
+    },
+    "academic_degree": "",
+    "phone": "",
+    "email": "",
+    "photo": "https://academiklitsey.pythonanywhere.com/media/management_photos/photo_2023-08-08_17-11-57.jpg",
+    "sort_order": 0,
+    "is_active": true
   },
   {
-    id: 2,
-    name: 'O\'quv ishlari bo\'yicha direktor o\'rinbosari',
-    position: 'O\'quv ishlari bo\'yicha direktor o\'rinbosari',
-    image: 'https://images.unsplash.com/photo-1551989745-347c28b620e5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjB3b21hbiUyMHRlYWNoZXJ8ZW58MXx8fHwxNzc1NDU4NTcyfDA&ixlib=rb-4.1.0&q=80&w=1080',
-    phone: '+99873 241-33-07',
-    email: 'info@fdtu1al.uz',
+    "id": 1,
+    "full_name": "Kamoliddin MIrzaboyev",
+    "translations": {
+      "uz": {
+        "position": "ada",
+        "bio": "sffwerrsf",
+        "reception_hours": "08:00-14:00"
+      },
+      "ru": {
+        "position": "asdsada",
+        "bio": "sfsdfsfs",
+        "reception_hours": "08:00-14:00"
+      }
+    },
+    "academic_degree": "wrngrefs",
+    "phone": "fsdedasfvxb",
+    "email": "dsfadsfxf@akjdsa.uasd",
+    "photo": "https://academiklitsey.pythonanywhere.com/media/management_photos/TTJ-2-1.jpg",
+    "sort_order": 1,
+    "is_active": true
   },
   {
-    id: 3,
-    name: 'Ma\'naviy-ma\'rifiy ishlar bo\'yicha direktor o\'rinbosari',
-    position: 'Ma\'naviy-ma\'rifiy ishlar bo\'yicha direktor o\'rinbosari',
-    image: 'https://images.unsplash.com/photo-1584554376766-ac0f2c65e949?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjB0ZWFjaGVyJTIwcG9ydHJhaXQlMjBtYW58ZW58MXx8fHwxNzc1NDU4MzQ4fDA&ixlib=rb-4.1.0&q=80&w=1080',
-    phone: '+99873 241-33-07',
-    email: 'info@fdtu1al.uz',
-  },
+    "id": 2,
+    "full_name": "Abdug'aniyev Sanjarbek",
+    "translations": {
+      "uz": {
+        "position": "Direktor o'rinbisari",
+        "bio": "qwsedfghjkjhbvgcfgxdfcvb",
+        "reception_hours": "08:00-14:00"
+      },
+      "ru": {
+        "position": "Direktor o'rinbisari",
+        "bio": "tfyghjkdfhsdlkfs dfks",
+        "reception_hours": "08:00-14:00"
+      }
+    },
+    "academic_degree": "PhD",
+    "phone": "+998777769990",
+    "email": "kamoliddinmirzaboyev2005@gmail.com",
+    "photo": "https://academiklitsey.pythonanywhere.com/media/management_photos/TTJ-2-1_zLvMYMV.jpg",
+    "sort_order": 2,
+    "is_active": true
+  }
 ];

@@ -1,8 +1,18 @@
-import { MapPin, Phone, Mail, Clock, Send, Instagram, Facebook, CheckCircle } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, Send, Instagram, Facebook, CheckCircle, Youtube } from 'lucide-react';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
+import { useSettings } from '../hooks/useSettings';
+import { settingsService } from '../services/settingsService';
 
 export function ContactPage() {
+  const { t, i18n } = useTranslation();
+  const { settings } = useSettings();
+  
+  const siteName = settingsService.getTranslation(settings, i18n.language);
+  const socialLinks = settingsService.getSocialLinks(settings);
+  const contactInfo = settingsService.getContactInfo(settings);
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -30,6 +40,13 @@ export function ContactPage() {
     }));
   };
 
+  const socialIcons = [
+    { icon: Facebook, href: socialLinks.facebook, color: "text-blue-700", hover: "hover:bg-blue-700", show: !!socialLinks.facebook },
+    { icon: Instagram, href: socialLinks.instagram, color: "text-pink-600", hover: "hover:bg-pink-600", show: !!socialLinks.instagram },
+    { icon: Send, href: socialLinks.telegram, color: "text-blue-500", hover: "hover:bg-blue-500", show: !!socialLinks.telegram },
+    { icon: Youtube, href: socialLinks.youtube, color: "text-red-600", hover: "hover:bg-red-600", show: !!socialLinks.youtube }
+  ].filter(s => s.show);
+
   return (
     <div className="min-h-screen overflow-hidden bg-white dark:bg-gray-950 transition-colors duration-300">
       {/* Page Header */}
@@ -41,9 +58,9 @@ export function ContactPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="text-4xl md:text-7xl font-black mb-6 tracking-tight uppercase">Bog'lanish</h1>
+            <h1 className="text-4xl md:text-7xl font-black mb-6 tracking-tight uppercase">{t('nav.contact')}</h1>
             <p className="text-lg md:text-2xl text-white/90 max-w-3xl leading-relaxed font-bold opacity-90 uppercase tracking-widest">
-              Savollaringiz bo'lsa, biz bilan bog'laning. Sizga yordam berishdan mamnunmiz!
+              {t('contact.pageSubtitle')}
             </p>
           </motion.div>
         </div>
@@ -58,10 +75,9 @@ export function ContactPage() {
               <div className="w-16 h-16 bg-[#0d89b1]/10 rounded-md flex items-center justify-center mb-8 group-hover:bg-[#0d89b1] group-hover:text-white transition-all duration-500 transform group-hover:rotate-6">
                 <MapPin size={32} className="text-[#0d89b1] group-hover:text-white" />
               </div>
-              <h3 className="text-2xl font-black text-gray-900 dark:text-white mb-4 uppercase tracking-tight">Manzil</h3>
+              <h3 className="text-2xl font-black text-gray-900 dark:text-white mb-4 uppercase tracking-tight">{t('contact.addressTitle')}</h3>
               <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-lg font-bold">
-                Farg‘ona sh., Muruvvat MFY,<br />
-                Farg‘ona ko‘chasi, 84-uy
+                {siteName.address || t('footer.address')}
               </p>
             </div>
 
@@ -69,14 +85,13 @@ export function ContactPage() {
               <div className="w-16 h-16 bg-[#0d89b1]/10 rounded-md flex items-center justify-center mb-8 group-hover:bg-[#0d89b1] group-hover:text-white transition-all duration-500 transform group-hover:rotate-6">
                 <Phone size={32} className="text-[#0d89b1] group-hover:text-white" />
               </div>
-              <h3 className="text-2xl font-black text-gray-900 dark:text-white mb-4 uppercase tracking-tight">Telefon</h3>
+              <h3 className="text-2xl font-black text-gray-900 dark:text-white mb-4 uppercase tracking-tight">{t('contact.phoneTitle')}</h3>
               <div className="space-y-3">
-                <a href="tel:+998732413307" className="block text-gray-600 dark:text-gray-400 hover:text-[#0d89b1] text-lg font-black transition-colors">
-                  +998 (73) 241-33-07
-                </a>
-                <a href="tel:+998732411206" className="block text-gray-600 dark:text-gray-400 hover:text-[#0d89b1] text-lg font-black transition-colors">
-                  +998 (73) 241-12-06
-                </a>
+                {contactInfo.phone && (
+                  <a href={`tel:${contactInfo.phone.replace(/\s/g, '')}`} className="block text-gray-600 dark:text-gray-400 hover:text-[#0d89b1] text-lg font-black transition-colors">
+                    {contactInfo.phone}
+                  </a>
+                )}
               </div>
             </div>
 
@@ -84,18 +99,16 @@ export function ContactPage() {
               <div className="w-16 h-16 bg-[#0d89b1]/10 rounded-md flex items-center justify-center mb-8 group-hover:bg-[#0d89b1] group-hover:text-white transition-all duration-500 transform group-hover:rotate-6">
                 <Mail size={32} className="text-[#0d89b1] group-hover:text-white" />
               </div>
-              <h3 className="text-2xl font-black text-gray-900 dark:text-white mb-4 uppercase tracking-tight">Email & Ijtimoiy</h3>
+              <h3 className="text-2xl font-black text-gray-900 dark:text-white mb-4 uppercase tracking-tight">{t('contact.emailTitle')}</h3>
               <div className="space-y-3 mb-6">
-                <a href="mailto:info@fstu.uz" className="block text-gray-600 dark:text-gray-400 hover:text-[#0d89b1] text-lg font-black transition-colors">
-                  info@fstu.uz
-                </a>
+                {contactInfo.email && (
+                  <a href={`mailto:${contactInfo.email}`} className="block text-gray-600 dark:text-gray-400 hover:text-[#0d89b1] text-lg font-black transition-colors">
+                    {contactInfo.email}
+                  </a>
+                )}
               </div>
               <div className="flex gap-4">
-                {[
-                  { icon: Instagram, href: "https://instagram.com/fdtu1al.uz", color: "text-pink-600", hover: "hover:bg-pink-600" },
-                  { icon: Send, href: "https://t.me/fdtu1al_uz", color: "text-blue-500", hover: "hover:bg-blue-500" },
-                  { icon: Facebook, href: "https://facebook.com", color: "text-blue-700", hover: "hover:bg-blue-700" }
-                ].map((social, idx) => (
+                {socialIcons.map((social, idx) => (
                   <a key={idx} href={social.href} target="_blank" rel="noopener noreferrer" className={`w-12 h-12 bg-gray-50 dark:bg-gray-900 rounded-md flex items-center justify-center ${social.color} ${social.hover} hover:text-white transition-all shadow-inner`}>
                     <social.icon size={24} />
                   </a>

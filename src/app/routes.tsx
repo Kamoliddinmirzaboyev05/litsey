@@ -8,6 +8,7 @@ import { AdmissionPage } from './pages/AdmissionPage';
 import { NewsPage } from './pages/NewsPage';
 import { NewsDetailPage } from './pages/NewsDetailPage';
 import { AnnouncementsPage } from './pages/AnnouncementsPage';
+import { AnnouncementsDetailPage } from './pages/AnnouncementsDetailPage';
 import { ContactPage } from './pages/ContactPage';
 import { SubjectsPage } from './pages/SubjectsPage';
 import { ProgramsPage } from './pages/ProgramsPage';
@@ -28,7 +29,7 @@ export const router = createBrowserRouter([
       { path: 'news', Component: NewsPage },
       { path: 'news/:slug', Component: NewsDetailPage },
       { path: 'announcements', Component: AnnouncementsPage },
-      { path: 'announcements/:slug', Component: AnnouncementsPage },
+      { path: 'announcements/:slug', Component: AnnouncementsDetailPage },
       { path: 'contact', Component: ContactPage },
       { path: '*', Component: NotFoundPage },
     ],

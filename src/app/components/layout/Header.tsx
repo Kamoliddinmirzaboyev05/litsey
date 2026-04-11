@@ -17,6 +17,8 @@ import {
 import { menuItems } from '../../data/menu';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from 'next-themes';
+import { useSettings } from '../../hooks/useSettings';
+import { settingsService } from '../../services/settingsService';
 
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -26,7 +28,12 @@ export function Header() {
   const location = useLocation();
   const { t, i18n } = useTranslation();
   const { theme, setTheme } = useTheme();
+  const { settings } = useSettings();
   const [mounted, setMounted] = useState(false);
+
+  const siteName = settingsService.getTranslation(settings, i18n.language);
+  const socialLinks = settingsService.getSocialLinks(settings);
+  const contactInfo = settingsService.getContactInfo(settings);
 
   useEffect(() => {
     setMounted(true);
@@ -69,10 +76,12 @@ export function Header() {
         <div className="container mx-auto px-4 py-2">
           <div className="flex items-center justify-between text-sm">
             <div className="flex items-center gap-4">
-              <a href="tel:+998732413307" className="flex items-center gap-2 hover:opacity-80 transition-opacity font-bold">
-                <Phone size={14} />
-                <span>+99873 241-33-07</span>
-              </a>
+              {contactInfo.phone && (
+                <a href={`tel:${contactInfo.phone.replace(/\s/g, '')}`} className="flex items-center gap-2 hover:opacity-80 transition-opacity font-bold">
+                  <Phone size={14} />
+                  <span>{contactInfo.phone}</span>
+                </a>
+              )}
             </div>
             <div className="flex items-center gap-6">
               {/* Language Switcher Desktop */}
@@ -103,30 +112,28 @@ export function Header() {
                 </div>
               </div>
 
-              {/* Theme Switcher 
-              {mounted && (
-                <button
-                  onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                  className="p-1 hover:text-white/80 transition-colors"
-                >
-                  {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
-                </button>
-              )}
-              */}
-
-              <div className="flex items-center gap-4 border-l border-white/20 pl-6">
-                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
-                  <Facebook size={16} />
-                </a>
-                <a href="https://instagram.com/fdtu1al.uz" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
-                  <Instagram size={16} />
-                </a>
-                <a href="https://t.me/fdtu1al_uz" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
-                  <Send size={16} />
-                </a>
-                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
-                  <Youtube size={16} />
-                </a>
+              <div className="flex items-center gap-4 ml-6 pl-6 relative">
+                <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-1 bg-white/40 rounded-full"></div>
+                {socialLinks.facebook && (
+                  <a href={socialLinks.facebook} target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
+                    <Facebook size={16} />
+                  </a>
+                )}
+                {socialLinks.instagram && (
+                  <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
+                    <Instagram size={16} />
+                  </a>
+                )}
+                {socialLinks.telegram && (
+                  <a href={socialLinks.telegram} target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
+                    <Send size={16} />
+                  </a>
+                )}
+                {socialLinks.youtube && (
+                  <a href={socialLinks.youtube} target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
+                    <Youtube size={16} />
+                  </a>
+                )}
               </div>
             </div>
           </div>
@@ -139,12 +146,11 @@ export function Header() {
           {/* Logo */}
            <Link to="/" className="flex items-center gap-2 md:gap-3 group">
              <div className="relative overflow-hidden rounded-lg p-1 bg-gray-50 dark:bg-gray-900 group-hover:bg-blue-50 dark:group-hover:bg-blue-900/20 transition-colors shadow-sm">
-               <img src="/logoicon.png" alt="FDTU 1-son AL" className="w-10 h-10 md:w-14 md:h-14 object-contain" />
+               <img src={contactInfo.logo || "/logoicon.png"} alt={siteName.short_name} className="w-10 h-10 md:w-14 md:h-14 object-contain" />
              </div>
              <div>
                <div className="text-sm md:text-lg font-black text-gray-900 dark:text-white leading-tight uppercase tracking-tight">
-                 FDTU 1-son <br className="md:hidden" />
-                 Akademik Litseyi
+                 {siteName.short_name}
                </div>
              </div>
            </Link>

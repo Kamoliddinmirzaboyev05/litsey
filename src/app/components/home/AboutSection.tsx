@@ -1,27 +1,29 @@
 import { CheckCircle, Award, BookOpen, Users } from 'lucide-react';
 import { Link } from 'react-router';
+import { useTranslation } from 'react-i18next';
 
 export function AboutSection() {
+  const { t } = useTranslation();
   const features = [
     {
       icon: Award,
-      title: 'Yuqori sifatli ta\'lim',
-      description: 'Zamonaviy o\'quv dasturlari va innovatsion ta\'lim texnologiyalari',
+      title: t('home.features.quality'),
+      description: t('home.features.qualityDesc'),
     },
     {
       icon: Users,
-      title: 'Malakali o\'qituvchilar',
-      description: '45+ yuqori malakali va tajribali pedagog xodimlari',
+      title: t('home.features.teachers'),
+      description: t('home.features.teachersDesc'),
     },
     {
       icon: BookOpen,
-      title: 'Keng fanlar doirasi',
-      description: 'Aniq fanlar, ingliz tili va STEM yo\'nalishlari',
+      title: t('home.features.subjects'),
+      description: t('home.features.subjectsDesc'),
     },
     {
       icon: CheckCircle,
-      title: '100% natija',
-      description: 'Barcha bitiruvchilar oliy ta\'lim muassasalariga kiradi',
+      title: t('home.features.result'),
+      description: t('home.features.resultDesc'),
     },
   ];
 
@@ -34,14 +36,14 @@ export function AboutSection() {
             <div className="relative rounded-lg overflow-hidden shadow-2xl">
               <img
                 src="https://images.unsplash.com/photo-1606761568499-6d2451b23c66?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzdHVkZW50cyUyMHN0dWR5aW5nJTIwY2xhc3Nyb29tfGVufDF8fHx8MTc3NTM1NzM2Nnww&ixlib=rb-4.1.0&q=80&w=1080"
-                alt="O'quvchilar"
+                alt={t('nav.about')}
                 className="w-full h-[500px] object-cover hover:scale-105 transition-transform duration-700"
               />
             </div>
             <div className="absolute -bottom-6 -right-6 w-48 h-48 bg-[#0d89b1] rounded-lg flex items-center justify-center shadow-xl border-4 border-white dark:border-gray-800">
               <div className="text-center text-white">
                 <div className="text-5xl font-black mb-2 tracking-tighter">26+</div>
-                <div className="text-xs font-black uppercase tracking-[0.2em] opacity-80">Yillik tajriba</div>
+                <div className="text-xs font-black uppercase tracking-[0.2em] opacity-80">{t('home.yearsExperience', 'Yillik tajriba')}</div>
               </div>
             </div>
           </div>
@@ -49,15 +51,13 @@ export function AboutSection() {
           {/* Right: Content */}
           <div data-aos="fade-left">
             <div className="inline-block px-5 py-2 bg-[#0d89b1]/10 text-[#0d89b1] rounded-full text-xs font-black mb-6 uppercase tracking-[0.2em]">
-              LITSEY HAQIDA
+              {t('home.aboutTitle')}
             </div>
             <h2 className="text-3xl md:text-5xl font-black text-gray-900 dark:text-white mb-8 leading-tight uppercase tracking-tight">
-              Farg‘ona viloyatining eng nufuzli akademik litseyi
+              {t('home.aboutSubtitle')}
             </h2>
             <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-8 text-lg font-medium">
-              Farg‘ona Davlat Texnika Universiteti 1-son Akademik Litseyi 2000-yil 8-avgustda tashkil etilgan. 
-              Litseyimiz Farg‘ona viloyatidagi eng nufuzli ta'lim muassasalaridan biri bo'lib, 
-              o'quvchilarni aniq va tabiiy fanlar bo'yicha chuqur bilim olishlariga yordam beradi.
+              {t('home.aboutDesc')}
             </p>
 
             {/* Features Grid */}
@@ -84,7 +84,7 @@ export function AboutSection() {
               to="/about"
               className="inline-flex items-center gap-3 px-10 py-5 bg-[#0d89b1] text-white rounded-lg hover:bg-[#0a6d8f] transition-all duration-300 font-black uppercase tracking-widest shadow-xl hover:shadow-2xl transform hover:-translate-y-1"
             >
-              Batafsil ma'lumot
+              {t('home.readMore')}
             </Link>
           </div>
         </div>

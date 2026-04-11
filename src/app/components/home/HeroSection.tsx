@@ -1,9 +1,13 @@
 import { Link } from 'react-router';
 import { ChevronRight } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { useSettings } from '../../hooks/useSettings';
+import { settingsService } from '../../services/settingsService';
 
 export function HeroSection() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const { settings } = useSettings();
+  const siteName = settingsService.getTranslation(settings, i18n.language);
 
   return (
     <section className="relative h-[80vh] md:h-[90vh] min-h-[600px] overflow-hidden bg-gray-900">
@@ -24,7 +28,7 @@ export function HeroSection() {
             data-aos="fade-up"
             className="text-4xl md:text-5xl lg:text-7xl font-black mb-6 leading-[1.1] tracking-tight uppercase"
           >
-            {t('home.heroTitle')}
+            {siteName.full_name || t('home.heroTitle')}
           </h1>
           <p 
             data-aos="fade-up"

@@ -139,7 +139,7 @@ export function NewsDetailPage() {
             </div>
             {translation.short_description && (
               <figcaption className="mt-6 px-4 md:px-0">
-                <p className="text-xl md:text-2xl font-medium text-gray-600 dark:text-gray-400 leading-relaxed italic border-l-4 border-[#0d89b1] pl-6">
+                <p className="text-xl md:text-2xl font-medium text-gray-600 dark:text-gray-400 leading-relaxed italic bg-[#0d89b1]/5 p-6 rounded-xl border border-[#0d89b1]/10">
                   {translation.short_description}
                 </p>
               </figcaption>

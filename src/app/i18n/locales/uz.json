@@ -29,7 +29,21 @@
     "heroTitle": "Farg‘ona Davlat Texnika Universiteti 1-son Akademik Litseyi",
     "heroDesc": "2000-yildan buyon Farg‘ona viloyatida yetakchi ta'lim muassasasi. FDTU professor-o‘qituvchilari, chuqurlashtirilgan fanlar dasturlari va eng yaxshi sharoitlar bilan sizning kelajagingizni quramiz.",
     "admissionBtn": "Qabul 2026",
-    "moreBtn": "Batafsil ma'lumot"
+    "moreBtn": "Batafsil ma'lumot",
+    "aboutTitle": "LITSEY HAQIDA",
+    "aboutSubtitle": "Farg‘ona viloyatidagi eng nufuzli akademik litsey",
+    "aboutDesc": "Farg‘ona Davlat Texnika Universiteti 1-son Akademik Litseyi 2000-yil 8-avgustda tashkil etilgan. Litseyimiz Farg‘ona viloyatidagi eng nufuzli ta'lim muassasalaridan biri bo'lib, o'quvchilarni aniq va tabiiy fanlar bo'yicha chuqur bilim olishlariga yordam beradi.",
+    "readMore": "Batafsil ma'lumot",
+    "features": {
+      "quality": "Yuqori sifatli ta'lim",
+      "qualityDesc": "Zamonaviy o'quv dasturlari va innovatsion ta'lim texnologiyalari",
+      "teachers": "Malakali o'qituvchilar",
+      "teachersDesc": "45+ dan ortiq yuqori malakali va tajribali pedagog kadrlar",
+      "subjects": "Keng qamrovli fanlar",
+      "subjectsDesc": "Aniq fanlar, ingliz tili va STEM yo'nalishlari",
+      "result": "100% natija",
+      "resultDesc": "Barcha bitiruvchilar oliy ta'lim muassasalariga o'qishga kiradi"
+    }
   },
   "theme": {
     "light": "Yorug' rejim",
@@ -46,5 +60,31 @@
     "teachers": "O'qituvchilar",
     "clubs": "To'garaklar",
     "rooms": "Sinfxonalar"
+  },
+  "leadership": {
+    "pageSubtitle": "Farg‘ona Davlat Texnika Universiteti 1-son Akademik Litseyining rahbar xodimlari",
+    "receptionHours": "Qabul kunlari",
+    "academicDegree": "Ilmiy darajasi",
+    "receptionNote": "* Oldindan telefon orqali vaqt belgilash tavsiya etiladi",
+    "bio": "Biografiya"
+  },
+  "announcements": {
+    "pageSubtitle": "Litseymiz bo'yicha muhim e'lonlar va xabarlar",
+    "contentTitle": "E'lon mazmuni",
+    "backToList": "Barcha e'lonlarga qaytish",
+    "notFound": "E'lon topilmadi",
+    "author": "Muallif",
+    "share": "Ulashish"
+  },
+  "teachers": {
+    "pageSubtitle": "Farg‘ona Davlat Texnika Universiteti 1-son Akademik Litseyining malakali va tajribali o'qituvchilar jamoasi",
+    "ctaTitle": "O'qituvchilarimiz bilan bog'lanish",
+    "ctaDesc": "Savol yoki takliflaringiz bo'lsa, litsey ma'muriyati bilan bog'laning. Biz har doim muloqotga tayyormiz!",
+    "academicDegree": "Ilmiy daraja",
+    "academicRank": "Ilmiy unvon",
+    "experience": "Ish tajribasi",
+    "years": "yil",
+    "category": "Toifasi",
+    "achievements": "Yutuqlari"
   }
 }

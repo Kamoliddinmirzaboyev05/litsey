@@ -1,9 +1,23 @@
 import { Link } from 'react-router';
 import { Phone, Mail, MapPin, Facebook, Instagram, Send, Youtube, Globe, Clock } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { useSettings } from '../../hooks/useSettings';
+import { settingsService } from '../../services/settingsService';
 
 export function Footer() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const { settings } = useSettings();
+
+  const siteName = settingsService.getTranslation(settings, i18n.language);
+  const socialLinks = settingsService.getSocialLinks(settings);
+  const contactInfo = settingsService.getContactInfo(settings);
+
+  const socialIcons = [
+    { icon: Facebook, href: socialLinks.facebook, color: "hover:bg-blue-600", show: !!socialLinks.facebook },
+    { icon: Instagram, href: socialLinks.instagram, color: "hover:bg-pink-600", show: !!socialLinks.instagram },
+    { icon: Send, href: socialLinks.telegram, color: "hover:bg-sky-500", show: !!socialLinks.telegram },
+    { icon: Youtube, href: socialLinks.youtube, color: "hover:bg-red-600", show: !!socialLinks.youtube }
+  ].filter(s => s.show);
 
   return (
     <footer className="bg-gray-950 text-gray-300 border-t border-white/5">
@@ -12,24 +26,23 @@ export function Footer() {
           {/* About */}
           <div className="space-y-6">
             <div className="flex items-center gap-3">
-              <div className="w-14 h-14 bg-gradient-to-br from-[#0d89b1] to-[#0a6d8f] rounded-2xl flex items-center justify-center text-white font-black text-xl shadow-lg">
-                FDTU
+              <div className="w-14 h-14 bg-gradient-to-br from-[#0d89b1] to-[#0a6d8f] rounded-2xl flex items-center justify-center text-white font-black text-xl shadow-lg overflow-hidden p-1">
+                {contactInfo.logo ? (
+                  <img src={contactInfo.logo} alt={siteName.short_name} className="w-full h-full object-contain" />
+                ) : (
+                  "FDTU"
+                )}
               </div>
               <div>
-                <div className="font-black text-white text-lg tracking-tight">FDTU 1-son</div>
-                <div className="text-xs text-[#0d89b1] font-bold uppercase tracking-widest">Akademik litseyi</div>
+                <div className="font-black text-white text-lg tracking-tight leading-tight">{siteName.short_name}</div>
+                <div className="text-xs text-[#0d89b1] font-bold uppercase tracking-widest">{t('nav.leadership')}</div>
               </div>
             </div>
             <p className="text-sm leading-relaxed text-gray-400 font-medium">
               {t('footer.about')}
             </p>
             <div className="flex gap-3">
-              {[
-                { icon: Facebook, href: "https://facebook.com", color: "hover:bg-blue-600" },
-                { icon: Instagram, href: "https://instagram.com/fdtu1al.uz", color: "hover:bg-pink-600" },
-                { icon: Send, href: "https://t.me/fdtu1al_uz", color: "hover:bg-sky-500" },
-                { icon: Youtube, href: "https://youtube.com", color: "hover:bg-red-600" }
-              ].map((social, idx) => (
+              {socialIcons.map((social, idx) => (
                 <a
                   key={idx}
                   href={social.href}
@@ -78,20 +91,24 @@ export function Footer() {
                 <div className="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center text-[#0d89b1] group-hover:bg-[#0d89b1] group-hover:text-white transition-all">
                   <MapPin size={20} />
                 </div>
-                <span className="text-gray-400 leading-relaxed">{t('footer.address')}</span>
+                <span className="text-gray-400 leading-relaxed">{siteName.address || t('footer.address')}</span>
               </li>
-              <li className="flex items-center gap-4 group">
-                <div className="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center text-[#0d89b1] group-hover:bg-[#0d89b1] group-hover:text-white transition-all">
-                  <Phone size={20} />
-                </div>
-                <a href="tel:+998732413307" className="text-gray-400 hover:text-[#0d89b1] transition-colors font-bold">+998 (73) 241-33-07</a>
-              </li>
-              <li className="flex items-center gap-4 group">
-                <div className="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center text-[#0d89b1] group-hover:bg-[#0d89b1] group-hover:text-white transition-all">
-                  <Mail size={20} />
-                </div>
-                <a href="mailto:info@fstu.uz" className="text-gray-400 hover:text-[#0d89b1] transition-colors font-bold">info@fstu.uz</a>
-              </li>
+              {contactInfo.phone && (
+                <li className="flex items-center gap-4 group">
+                  <div className="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center text-[#0d89b1] group-hover:bg-[#0d89b1] group-hover:text-white transition-all">
+                    <Phone size={20} />
+                  </div>
+                  <a href={`tel:${contactInfo.phone.replace(/\s/g, '')}`} className="text-gray-400 hover:text-[#0d89b1] transition-colors font-bold">{contactInfo.phone}</a>
+                </li>
+              )}
+              {contactInfo.email && (
+                <li className="flex items-center gap-4 group">
+                  <div className="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center text-[#0d89b1] group-hover:bg-[#0d89b1] group-hover:text-white transition-all">
+                    <Mail size={20} />
+                  </div>
+                  <a href={`mailto:${contactInfo.email}`} className="text-gray-400 hover:text-[#0d89b1] transition-colors font-bold">{contactInfo.email}</a>
+                </li>
+              )}
             </ul>
           </div>
 
@@ -124,8 +141,8 @@ export function Footer() {
 
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-gray-500 font-bold">
-            &copy; 2026 Farg‘ona Davlat Texnika Universiteti 1-son Akademik Litseyi. {t('footer.rights')}
+          <p className="text-sm text-gray-500 font-bold text-center md:text-left">
+            &copy; {contactInfo.established_year} - {new Date().getFullYear()} {siteName.full_name}. {t('footer.rights')}
           </p>
           <div className="flex items-center gap-6 text-sm font-black text-gray-500 uppercase tracking-widest">
             <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
