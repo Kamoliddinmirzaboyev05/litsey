@@ -1,31 +1,34 @@
 import { GraduationCap, Globe, FlaskConical, BookOpen, Building2 } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 export function WhyUsSection() {
+  const { t } = useTranslation();
+
   const reasons = [
     {
       icon: GraduationCap,
-      title: '100% bitiruvchilar talaba bo\'ladi',
-      description: 'Litseymiz barcha bitiruvchilari oliy ta\'lim muassasalariga qabul qilinadi, ko\'plari yetakchi universitetlarga kiradi.',
+      title: 'home.whyUs.students',
+      description: 'home.whyUs.studentsDesc',
     },
     {
       icon: Globe,
-      title: 'Ingliz tili 60+ ball',
-      description: 'Kuchaytirilgan ingliz tili dasturi orqali o\'quvchilarimiz IELTS 6.0+ natijalariga erishadilar.',
+      title: 'home.whyUs.english',
+      description: 'home.whyUs.englishDesc',
     },
     {
       icon: FlaskConical,
-      title: 'Zamonaviy STEM laboratoriya',
-      description: 'Yangi jihozlangan STEM laboratoriyasida amaliy tajribalar va ilmiy loyihalar amalga oshiriladi.',
+      title: 'home.whyUs.stem',
+      description: 'home.whyUs.stemDesc',
     },
     {
       icon: BookOpen,
-      title: 'Bepul qo\'shimcha kurslar',
-      description: 'Dasturlash, robotika, olimpiada matematikasi va boshqa 25+ to\'garak mutlaqo bepul.',
+      title: 'home.whyUs.courses',
+      description: 'home.whyUs.coursesDesc',
     },
     {
       icon: Building2,
-      title: 'FDTU bilan hamkorlik',
-      description: 'Farg‘ona Davlat Texnika Universiteti bilan yaqin hamkorlik va universitet o\'qituvchilari dars berishi.',
+      title: 'home.whyUs.cooperation',
+      description: 'home.whyUs.cooperationDesc',
     },
   ];
 
@@ -34,13 +37,13 @@ export function WhyUsSection() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16" data-aos="fade-up">
           <div className="inline-block px-5 py-2 bg-[#0d89b1]/10 text-[#0d89b1] rounded-full text-xs font-black mb-4 uppercase tracking-[0.2em]">
-            BIZNING AFZALLIKLARIMIZ
+            {t('home.whyUs.badge')}
           </div>
           <h2 className="text-3xl md:text-5xl font-black text-gray-900 dark:text-white mb-6 uppercase tracking-tight">
-            Nima uchun aynan biz?
+            {t('home.whyUs.title')}
           </h2>
           <p className="text-gray-600 dark:text-gray-400 text-lg max-w-3xl mx-auto font-medium">
-            Litseymizni tanlash uchun bir necha asosiy sabablarga e'tibor bering
+            {t('home.whyUs.subtitle')}
           </p>
         </div>
 
@@ -57,9 +60,9 @@ export function WhyUsSection() {
                 <div className="w-16 h-16 bg-[#0d89b1]/10 rounded-md flex items-center justify-center mb-8 group-hover:bg-[#0d89b1] group-hover:text-white transition-all duration-500 transform group-hover:rotate-6">
                   <Icon size={32} className="text-[#0d89b1] group-hover:text-white" />
                 </div>
-                <h3 className="text-xl font-black text-gray-900 dark:text-white mb-4 uppercase tracking-wider">{reason.title}</h3>
+                <h3 className="text-xl font-black text-gray-900 dark:text-white mb-4 uppercase tracking-wider">{t(reason.title)}</h3>
                 <p className="text-gray-600 dark:text-gray-400 leading-relaxed font-medium">
-                  {reason.description}
+                  {t(reason.description)}
                 </p>
               </div>
             );

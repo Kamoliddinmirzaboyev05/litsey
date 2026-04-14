@@ -90,6 +90,7 @@ export interface Teacher {
   department_name: string | null;
   photo: string;
   email: string;
+  phone?: string;
   sort_order: number;
   is_active: boolean;
   created_at: string;

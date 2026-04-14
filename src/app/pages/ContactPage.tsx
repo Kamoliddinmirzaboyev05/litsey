@@ -100,168 +100,145 @@ export function ContactPage() {
                 <Mail size={32} className="text-[#0d89b1] group-hover:text-white" />
               </div>
               <h3 className="text-2xl font-black text-gray-900 dark:text-white mb-4 uppercase tracking-tight">{t('contact.emailTitle')}</h3>
-              <div className="space-y-3 mb-6">
-                {contactInfo.email && (
-                  <a href={`mailto:${contactInfo.email}`} className="block text-gray-600 dark:text-gray-400 hover:text-[#0d89b1] text-lg font-black transition-colors">
-                    {contactInfo.email}
-                  </a>
-                )}
-              </div>
-              <div className="flex gap-4">
-                {socialIcons.map((social, idx) => (
-                  <a key={idx} href={social.href} target="_blank" rel="noopener noreferrer" className={`w-12 h-12 bg-gray-50 dark:bg-gray-900 rounded-md flex items-center justify-center ${social.color} ${social.hover} hover:text-white transition-all shadow-inner`}>
-                    <social.icon size={24} />
-                  </a>
-                ))}
-              </div>
+              {contactInfo.email && (
+                <a href={`mailto:${contactInfo.email}`} className="text-gray-600 dark:text-gray-400 hover:text-[#0d89b1] text-lg font-black transition-colors break-all">
+                  {contactInfo.email}
+                </a>
+              )}
             </div>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12">
-            {/* Contact Form */}
-            <div className="bg-white dark:bg-gray-950 rounded-lg p-12 shadow-2xl border border-gray-100 dark:border-gray-800" data-aos="fade-right">
-              <h2 className="text-3xl md:text-4xl font-black text-gray-900 dark:text-white mb-10 uppercase tracking-tight">Xabar yuborish</h2>
-              
-              {submitted && (
-                <motion.div 
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: 'auto' }}
-                  className="mb-10 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-900/30 rounded-lg p-6 text-green-700 dark:text-green-400 font-black flex items-center gap-4 shadow-inner"
-                >
-                  <CheckCircle size={28} />
-                  Xabaringiz muvaffaqiyatli yuborildi! Tez orada siz bilan bog'lanamiz.
-                </motion.div>
-              )}
+          <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+            {/* Form */}
+            <div className="bg-white dark:bg-gray-950 rounded-lg p-10 shadow-2xl border border-gray-100 dark:border-gray-800" data-aos="fade-right">
+              <h3 className="text-3xl font-black text-gray-900 dark:text-white mb-4 uppercase tracking-tight">{t('contact.formTitle')}</h3>
+              <p className="text-gray-500 dark:text-gray-400 mb-10 font-medium">
+                {t('contact.formSubtitle')}
+              </p>
 
-              <form onSubmit={handleSubmit} className="space-y-8">
-                <div className="grid sm:grid-cols-2 gap-8">
-                  <div className="space-y-3">
-                    <label htmlFor="name" className="text-[10px] font-black text-gray-400 dark:text-gray-500 uppercase tracking-[0.2em] ml-2">
-                      Ismingiz *
-                    </label>
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-xs font-black text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-3">{t('contact.name')}</label>
                     <input
                       type="text"
-                      id="name"
                       name="name"
-                      required
                       value={formData.name}
                       onChange={handleChange}
-                      className="w-full px-6 py-5 bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-lg focus:ring-4 focus:ring-[#0d89b1]/10 focus:border-[#0d89b1] outline-none transition-all font-bold text-gray-900 dark:text-white shadow-inner"
-                      placeholder="To'liq ismingiz"
+                      required
+                      className="w-full bg-gray-50 dark:bg-gray-900 border-none rounded-lg px-6 py-4 focus:ring-2 focus:ring-[#0d89b1] transition-all text-gray-900 dark:text-white font-bold"
+                      placeholder="Ikboljon Boltaboyev"
                     />
                   </div>
-                  <div className="space-y-3">
-                    <label htmlFor="phone" className="text-[10px] font-black text-gray-400 dark:text-gray-500 uppercase tracking-[0.2em] ml-2">
-                      Telefon *
-                    </label>
+                  <div>
+                    <label className="block text-xs font-black text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-3">{t('contact.email')}</label>
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      className="w-full bg-gray-50 dark:bg-gray-900 border-none rounded-lg px-6 py-4 focus:ring-2 focus:ring-[#0d89b1] transition-all text-gray-900 dark:text-white font-bold"
+                      placeholder="example@mail.com"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-xs font-black text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-3">{t('contact.phone')}</label>
                     <input
                       type="tel"
-                      id="phone"
                       name="phone"
-                      required
                       value={formData.phone}
                       onChange={handleChange}
-                      className="w-full px-6 py-5 bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-lg focus:ring-4 focus:ring-[#0d89b1]/10 focus:border-[#0d89b1] outline-none transition-all font-bold text-gray-900 dark:text-white shadow-inner"
+                      required
+                      className="w-full bg-gray-50 dark:bg-gray-900 border-none rounded-lg px-6 py-4 focus:ring-2 focus:ring-[#0d89b1] transition-all text-gray-900 dark:text-white font-bold"
                       placeholder="+998 90 123 45 67"
                     />
                   </div>
+                  <div>
+                    <label className="block text-xs font-black text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-3">{t('contact.subject')}</label>
+                    <select
+                      name="subject"
+                      value={formData.subject}
+                      onChange={handleChange}
+                      required
+                      className="w-full bg-gray-50 dark:bg-gray-900 border-none rounded-lg px-6 py-4 focus:ring-2 focus:ring-[#0d89b1] transition-all text-gray-900 dark:text-white font-bold appearance-none"
+                    >
+                      <option value="">{t('contact.subject')}</option>
+                      <option value="admission">{t('contact.subjects.admission')}</option>
+                      <option value="education">{t('contact.subjects.education')}</option>
+                      <option value="other">{t('contact.subjects.other')}</option>
+                    </select>
+                  </div>
                 </div>
 
-                <div className="space-y-3">
-                  <label htmlFor="email" className="text-[10px] font-black text-gray-400 dark:text-gray-500 uppercase tracking-[0.2em] ml-2">
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="w-full px-6 py-5 bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-lg focus:ring-4 focus:ring-[#0d89b1]/10 focus:border-[#0d89b1] outline-none transition-all font-bold text-gray-900 dark:text-white shadow-inner"
-                    placeholder="example@mail.com"
-                  />
-                </div>
-
-                <div className="space-y-3">
-                  <label htmlFor="subject" className="text-[10px] font-black text-gray-400 dark:text-gray-500 uppercase tracking-[0.2em] ml-2">
-                    Mavzu *
-                  </label>
-                  <select
-                    id="subject"
-                    name="subject"
-                    required
-                    value={formData.subject}
-                    onChange={handleChange}
-                    className="w-full px-6 py-5 bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-lg focus:ring-4 focus:ring-[#0d89b1]/10 focus:border-[#0d89b1] outline-none transition-all font-black text-gray-700 dark:text-gray-300 shadow-inner"
-                  >
-                    <option value="">Mavzuni tanlang</option>
-                    <option value="admission">Qabul haqida</option>
-                    <option value="education">Ta'lim jarayoni</option>
-                    <option value="other">Boshqa</option>
-                  </select>
-                </div>
-
-                <div className="space-y-3">
-                  <label htmlFor="message" className="text-[10px] font-black text-gray-400 dark:text-gray-500 uppercase tracking-[0.2em] ml-2">
-                    Xabar *
-                  </label>
+                <div>
+                  <label className="block text-xs font-black text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-3">{t('contact.message')}</label>
                   <textarea
-                    id="message"
                     name="message"
-                    required
                     value={formData.message}
                     onChange={handleChange}
-                    rows={5}
-                    className="w-full px-6 py-5 bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-lg focus:ring-4 focus:ring-[#0d89b1]/10 focus:border-[#0d89b1] outline-none transition-all resize-none font-bold text-gray-900 dark:text-white shadow-inner"
-                    placeholder="Xabaringizni yozing..."
+                    required
+                    rows={6}
+                    className="w-full bg-gray-50 dark:bg-gray-900 border-none rounded-lg px-6 py-4 focus:ring-2 focus:ring-[#0d89b1] transition-all text-gray-900 dark:text-white font-bold resize-none"
+                    placeholder={t('contact.message')}
                   ></textarea>
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full flex items-center justify-center gap-4 px-10 py-6 bg-[#0d89b1] text-white rounded-lg hover:bg-[#0a6d8f] transition-all font-black shadow-2xl hover:shadow-[#0d89b1]/40 transform hover:-translate-y-1 uppercase tracking-[0.2em] text-sm"
+                  disabled={submitted}
+                  className={`w-full py-5 rounded-lg font-black uppercase tracking-widest transition-all duration-300 shadow-xl ${
+                    submitted 
+                      ? 'bg-green-500 text-white cursor-default' 
+                      : 'bg-[#0d89b1] text-white hover:bg-[#0a6d8f] hover:shadow-2xl transform hover:-translate-y-1'
+                  }`}
                 >
-                  <Send size={28} />
-                  XABAR YUBORISH
+                  {submitted ? (
+                    <span className="flex items-center justify-center gap-2">
+                      <CheckCircle size={20} />
+                      {t('contact.success')}
+                    </span>
+                  ) : (
+                    t('contact.send')
+                  )}
                 </button>
               </form>
             </div>
 
-            {/* Working Hours & Map */}
-            <div className="space-y-10" data-aos="fade-left">
-              <div className="bg-white dark:bg-gray-950 rounded-lg p-12 shadow-2xl border border-gray-100 dark:border-gray-800">
-                <div className="flex items-center gap-6 mb-10">
-                  <div className="w-14 h-14 bg-[#0d89b1]/10 rounded-2xl flex items-center justify-center text-[#0d89b1] shadow-inner">
-                    <Clock size={32} />
-                  </div>
-                  <h2 className="text-2xl md:text-3xl font-black text-gray-900 dark:text-white uppercase tracking-tight">Ish vaqti</h2>
-                </div>
-                <div className="space-y-6">
-                  <div className="flex justify-between items-center pb-5 border-b border-gray-100 dark:border-gray-800">
-                    <span className="font-black text-gray-700 dark:text-gray-300 text-lg uppercase tracking-tight">Dushanba - Juma</span>
-                    <span className="text-gray-600 dark:text-gray-400 font-black text-xl tracking-tighter">08:00 - 17:00</span>
-                  </div>
-                  <div className="flex justify-between items-center pb-5 border-b border-gray-100 dark:border-gray-800">
-                    <span className="font-black text-gray-700 dark:text-gray-300 text-lg uppercase tracking-tight">Shanba</span>
-                    <span className="text-gray-600 dark:text-gray-400 font-black text-xl tracking-tighter">09:00 - 14:00</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="font-black text-gray-700 dark:text-gray-300 text-lg uppercase tracking-tight">Yakshanba</span>
-                    <span className="text-red-500 font-black uppercase tracking-[0.2em] text-sm">Dam olish</span>
-                  </div>
+            {/* Social & Map */}
+            <div className="space-y-8" data-aos="fade-left">
+              <div className="bg-gray-900 rounded-lg p-10 text-white shadow-2xl relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-bl-full"></div>
+                <h3 className="text-2xl font-black mb-8 uppercase tracking-tight relative z-10">{t('footer.socials')}</h3>
+                <div className="grid grid-cols-2 gap-4 relative z-10">
+                  {socialIcons.map((social, idx) => (
+                    <a
+                      key={idx}
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-4 bg-white/5 p-4 rounded-lg hover:bg-white/10 transition-all group"
+                    >
+                      <div className={`w-10 h-10 rounded-md bg-white/10 flex items-center justify-center group-hover:scale-110 transition-transform ${social.color}`}>
+                        <social.icon size={20} />
+                      </div>
+                      <span className="font-bold text-sm uppercase tracking-widest">{social.icon.name}</span>
+                    </a>
+                  ))}
                 </div>
               </div>
 
-              {/* Map */}
-              <div className="bg-white dark:bg-gray-950 rounded-lg overflow-hidden shadow-2xl border-4 border-white dark:border-gray-800 h-[450px] grayscale hover:grayscale-0 transition-all duration-700">
+              <div className="bg-white dark:bg-gray-950 rounded-lg overflow-hidden shadow-2xl h-[400px] border border-gray-100 dark:border-gray-800">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3037.1234567890123!2d71.77196941208126!3d40.42417922132789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDI1JzI3LjAiTiA3McKwNDYnMTkuMSJF!5e0!3m2!1sen!2s!4v1647000000000!5m2!1sen!2s"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3037.7663435134983!2d71.7828!3d40.3864!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDIzJzExLjAiTiA3McKwNDYnNTguMSJF!5e0!3m2!1sen!2suz!4v1620000000000!5m2!1sen!2suz"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
-                  allowFullScreen
+                  allowFullScreen={true}
                   loading="lazy"
-                  title="Litsey manzili"
                 ></iframe>
               </div>
             </div>

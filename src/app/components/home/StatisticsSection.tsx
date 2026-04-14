@@ -33,10 +33,10 @@ export function StatisticsSection() {
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16" data-aos="fade-up">
           <h2 className="text-3xl md:text-5xl font-black text-white mb-6 uppercase tracking-tight">
-            Statistika
+            {t('home.stats.title')}
           </h2>
           <p className="text-white/80 text-lg max-w-2xl mx-auto font-bold opacity-90 uppercase tracking-widest">
-            Litsey yutuqlari va faoliyati statistikasi
+            {t('home.stats.subtitle')}
           </p>
         </div>
 

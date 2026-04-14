@@ -1,4 +1,4 @@
-import { Award, Target, Eye, Heart, Building2, Calendar, Phone, MapPin, User, GraduationCap, CheckCircle } from 'lucide-react';
+import { Target, Eye, Heart, Building2, Calendar, Phone, MapPin, User, GraduationCap, CheckCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 
@@ -8,63 +8,58 @@ export function AboutPage() {
   const generalInfo = [
     {
       icon: Building2,
-      label: t('nav.about'), // Using key as label for simplicity in this example
-      value: 'Farg‘ona Davlat Texnika Universiteti 1-son Akademik Litseyi'
-    },
-    {
-      icon: Calendar,
-      label: 'Tashkil etilgan sana',
-      value: '2000-yil 8-avgust'
-    },
-    {
-      icon: User,
-      label: 'Direktor',
+      label: t('about.director'),
       value: 'Boltaboyev Ikboljon Tursunalievich'
     },
     {
+      icon: Calendar,
+      label: t('about.established'),
+      value: t('about.establishedDate')
+    },
+    {
       icon: MapPin,
-      label: 'Manzil',
-      value: 'Farg‘ona shahri, Muruvvat MFY, Farg‘ona ko‘chasi, 84-uy'
+      label: t('about.address'),
+      value: t('footer.address')
     },
     {
       icon: Phone,
-      label: 'Telefon',
+      label: t('about.phone'),
       value: '+99873 241-33-07'
     },
     {
       icon: GraduationCap,
-      label: 'Ta’sischi',
-      value: 'O‘zbekiston Respublikasi Oliy ta’lim, fan va innovatsiyalar vazirligi'
+      label: t('about.founder'),
+      value: t('about.founderValue')
     }
   ];
 
   const values = [
     {
       icon: Target,
-      title: 'Maqsadimiz',
-      description: 'Har bir o‘quvchini chuqur bilimga ega, ijodiy fikrlash qobiliyatiga ega va oliy ta’limga tayyor shaxs sifatida tarbiyalash.',
+      title: t('about.goalTitle'),
+      description: t('about.goalDesc'),
     },
     {
       icon: Eye,
-      title: 'Vazifamiz',
-      description: 'Zamonaviy texnika va aniq fanlar sohasida yuqori malakali mutaxassislar tayyorlash, FDTU bilan yaqin hamkorlikda sifatli ta’lim berish.',
+      title: t('about.missionTitle'),
+      description: t('about.missionDesc'),
     },
     {
       icon: Heart,
-      title: 'Qadriyatlarimiz',
-      description: 'Halollik, mas’uliyat, innovatsion yondashuv, ilimga hurmat va doimiy o‘z-o‘zini takomillashtirish.',
+      title: t('about.valuesTitle'),
+      description: t('about.valuesDesc'),
     },
   ];
 
   const advantages = [
-    'Farg‘ona viloyatidagi eng nufuzli akademik litsey',
-    'FDTU professor-o‘qituvchilari tomonidan dars berish',
-    'Chuqurlashtirilgan aniq va tabiiy fanlar dasturlari',
-    'Qulay sharoitdagi yotoqxona',
-    '3 mahal imtiyozli ovqatlanish tizimi',
-    'Zamonaviy sport maydonchalari va inshootlari',
-    'FDTU barcha resurslaridan foydalanish imkoni',
-    'Har yili 90% dan ortiq bitiruvchilar oliy ta’limga kiradi'
+    t('about.adv1'),
+    t('about.adv2'),
+    t('about.adv3'),
+    t('about.adv4'),
+    t('about.adv5'),
+    t('about.adv6'),
+    t('about.adv7'),
+    t('about.adv8')
   ];
 
   return (
@@ -80,7 +75,7 @@ export function AboutPage() {
           >
             <h1 className="text-4xl md:text-7xl font-black mb-6 tracking-tight uppercase">{t('nav.about')}</h1>
             <p className="text-lg md:text-2xl text-white/90 max-w-3xl leading-relaxed font-bold opacity-90 uppercase tracking-widest">
-              Farg‘ona Davlat Texnika Universiteti 1-son Akademik Litseyi — viloyatdagi eng nufuzli ta'lim muassasalaridan biri. 2000-yildan buyon yuqori sifatli ta'lim berib kelmoqda.
+              {t('about.pageSubtitle')}
             </p>
           </motion.div>
         </div>
@@ -90,29 +85,27 @@ export function AboutPage() {
       <section className="py-20 bg-gray-50 dark:bg-gray-900 transition-colors">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16" data-aos="fade-up">
-            <h2 className="text-3xl md:text-5xl font-black text-gray-900 dark:text-white mb-6 uppercase tracking-tight">Umumiy ma'lumotlar</h2>
+            <h2 className="text-3xl md:text-5xl font-black text-gray-900 dark:text-white mb-6 uppercase tracking-tight">{t('about.generalInfo')}</h2>
             <div className="w-24 h-2 bg-[#0d89b1] mx-auto rounded-full shadow-lg shadow-[#0d89b1]/30"></div>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {generalInfo.map((item, index) => {
               const Icon = item.icon;
               return (
-                <div 
-                  key={index} 
-                  data-aos="fade-up"
-                  data-aos-delay={index * 100}
-                  className="bg-white dark:bg-gray-950 rounded-lg p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 dark:border-gray-800 group hover:-translate-y-2"
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="bg-white dark:bg-gray-950 p-8 rounded-lg shadow-lg border border-gray-100 dark:border-gray-800 hover:border-[#0d89b1] transition-all group"
                 >
-                  <div className="flex items-start gap-6">
-                    <div className="w-16 h-16 bg-[#0d89b1]/10 rounded-md flex items-center justify-center flex-shrink-0 group-hover:bg-[#0d89b1] group-hover:text-white transition-all duration-500 transform group-hover:rotate-6">
-                      <Icon size={32} className="text-[#0d89b1] group-hover:text-white" />
-                    </div>
-                    <div>
-                      <p className="text-xs font-black text-gray-400 dark:text-gray-500 mb-2 uppercase tracking-[0.2em]">{item.label}</p>
-                      <p className="text-lg font-black text-gray-900 dark:text-white leading-tight uppercase tracking-tight">{item.value}</p>
-                    </div>
+                  <div className="w-14 h-14 bg-[#0d89b1]/10 rounded-md flex items-center justify-center mb-6 group-hover:bg-[#0d89b1] group-hover:text-white transition-all">
+                    <Icon size={28} className="text-[#0d89b1] group-hover:text-white" />
                   </div>
-                </div>
+                  <h3 className="text-sm font-black text-gray-400 dark:text-gray-500 uppercase tracking-[0.2em] mb-2">{item.label}</h3>
+                  <p className="text-lg font-bold text-gray-900 dark:text-white leading-tight">{item.value}</p>
+                </motion.div>
               );
             })}
           </div>
@@ -120,65 +113,39 @@ export function AboutPage() {
       </section>
 
       {/* History Section */}
-      <section className="py-24 bg-white dark:bg-gray-950 transition-colors">
+      <section className="py-20 bg-white dark:bg-gray-950 transition-colors">
         <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <div data-aos="fade-right">
-                <h2 className="text-3xl md:text-5xl font-black text-gray-900 dark:text-white mb-10 leading-tight uppercase tracking-tight">Litsey tarixi</h2>
-                <div className="prose prose-lg max-w-none text-gray-600 dark:text-gray-400 space-y-8 font-medium">
-                  <p className="text-xl leading-relaxed">
-                    FDTU 1-son Akademik Litseyi 2000-yil 8-avgust kuni Farg‘ona Politexnika Instituti (FarPI) qoshida ochilgan. Dastlab texnika va aniq fanlarga ixtisoslashtirilgan holda faoliyat boshlagan.
-                  </p>
-                  <p className="text-xl leading-relaxed">
-                    Farg‘ona Politexnika Instituti Farg‘ona Davlat Texnika Universiteti (FDTU)ga aylangandan so‘ng litsey "1-son akademik litsey" nomini oldi va hozirgacha universitet bilan eng yaqin hamkorlikda ishlab kelmoqda.
-                  </p>
-                  <p className="text-xl leading-relaxed font-black text-gray-900 dark:text-white uppercase tracking-tight opacity-90">
-                    Hozirgi kunda litsey Farg‘ona viloyatidagi eng nufuzli va eng zo'r natijalarni ko'rsatayotgan akademik litseylar qatoriga kiradi. Universitetning professor-o‘qituvchilari litseyda dars berishadi.
-                  </p>
-                  
-                </div>
-              </div>
-              <div className="relative" data-aos="fade-left">
-                <div className="rounded-lg overflow-hidden shadow-2xl border-4 border-white dark:border-gray-800">
-                  <img 
-                    src="https://avatars.mds.yandex.net/get-altay/3511135/2a000001794953509e5d099beac03556466a/L_height" 
-                    alt="Litsey tarixi" 
-                    className="w-full h-[600px] object-cover hover:scale-105 transition-transform duration-700"
-                  />
-                </div>
-                <div className="absolute -bottom-10 z-10 -left-10 w-64 h-64 bg-[#0d89b1] rounded-lg  opacity-30"></div>
-              </div>
+          <div className="max-w-4xl mx-auto">
+            <div className="inline-block px-5 py-2 bg-[#0d89b1]/10 text-[#0d89b1] rounded-full text-xs font-black mb-6 uppercase tracking-[0.2em]">
+              {t('about.history')}
+            </div>
+            <h2 className="text-3xl md:text-5xl font-black text-gray-900 dark:text-white mb-10 uppercase tracking-tight">{t('about.history')}</h2>
+            <div className="space-y-6 text-lg text-gray-600 dark:text-gray-400 font-medium leading-relaxed">
+              <p>{t('about.historyP1')}</p>
+              <p>{t('about.historyP2')}</p>
+              <p>{t('about.historyP3')}</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Mission, Vision, Values */}
-      <section className="py-24 bg-gray-50 dark:bg-gray-900 transition-colors">
+      {/* Goals and Values Section */}
+      <section className="py-20 bg-gray-50 dark:bg-gray-900 transition-colors">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16" data-aos="fade-up">
-            <h2 className="text-3xl md:text-5xl font-black text-gray-900 dark:text-white mb-6 uppercase tracking-tight">
-              Maqsad va qadriyatlarimiz
-            </h2>
+            <h2 className="text-3xl md:text-5xl font-black text-gray-900 dark:text-white mb-6 uppercase tracking-tight">{t('about.mission')}</h2>
             <div className="w-24 h-2 bg-[#0d89b1] mx-auto rounded-full shadow-lg shadow-[#0d89b1]/30"></div>
           </div>
-
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {values.map((value, index) => {
               const Icon = value.icon;
               return (
-                <div 
-                  key={index} 
-                  data-aos="fade-up"
-                  data-aos-delay={index * 150}
-                  className="bg-white dark:bg-gray-950 rounded-lg p-12 shadow-xl text-center hover:shadow-2xl transition-all duration-500 border border-gray-100 dark:border-gray-800 group hover:-translate-y-2"
-                >
-                  <div className="w-24 h-24 bg-gradient-to-br from-[#0d89b1] to-[#0a6d8f] rounded-lg flex items-center justify-center mx-auto mb-10 transform group-hover:rotate-12 transition-transform shadow-lg">
-                    <Icon size={44} className="text-white" />
+                <div key={index} className="bg-white dark:bg-gray-950 p-10 rounded-lg shadow-lg border border-gray-100 dark:border-gray-800 text-center group hover:-translate-y-2 transition-all duration-300">
+                  <div className="w-20 h-20 bg-[#0d89b1]/10 rounded-full flex items-center justify-center mx-auto mb-8 group-hover:bg-[#0d89b1] group-hover:text-white transition-all">
+                    <Icon size={36} className="text-[#0d89b1] group-hover:text-white" />
                   </div>
-                  <h3 className="text-2xl font-black text-gray-900 dark:text-white mb-6 uppercase tracking-wider leading-tight">{value.title}</h3>
-                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-lg font-medium">{value.description}</p>
+                  <h3 className="text-xl font-black text-gray-900 dark:text-white mb-4 uppercase tracking-wider">{value.title}</h3>
+                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed font-medium">{value.description}</p>
                 </div>
               );
             })}
@@ -187,51 +154,37 @@ export function AboutPage() {
       </section>
 
       {/* Advantages Section */}
-      <section className="py-24 bg-white dark:bg-gray-950 transition-colors">
+      <section className="py-20 bg-white dark:bg-gray-950 transition-colors">
         <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16" data-aos="fade-up">
-              <h2 className="text-3xl md:text-5xl font-black text-gray-900 dark:text-white mb-6 uppercase tracking-tight">Afzalliklarimiz</h2>
-              <div className="w-24 h-2 bg-[#0d89b1] mx-auto rounded-full shadow-lg shadow-[#0d89b1]/30"></div>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-8">
-              {advantages.map((item, index) => (
-                <div
-                  key={index}
-                  data-aos="fade-up"
-                  data-aos-delay={index * 50}
-                  className="flex items-center gap-6 p-8 bg-white dark:bg-gray-900 rounded-[2rem] border border-gray-100 dark:border-gray-800 shadow-lg hover:shadow-2xl hover:border-[#0d89b1]/30 transition-all group hover:-translate-x-1"
-                >
-                  <div className="flex-shrink-0 w-12 h-12 bg-[#0d89b1]/10 rounded-2xl flex items-center justify-center text-[#0d89b1] group-hover:bg-[#0d89b1] group-hover:text-white transition-all duration-500">
-                    <CheckCircle size={28} />
+          <div className="grid lg:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
+            <div>
+              <div className="inline-block px-5 py-2 bg-[#0d89b1]/10 text-[#0d89b1] rounded-full text-xs font-black mb-6 uppercase tracking-[0.2em]">
+                {t('about.advantages')}
+              </div>
+              <h2 className="text-3xl md:text-5xl font-black text-gray-900 dark:text-white mb-10 uppercase tracking-tight">{t('about.advantages')}</h2>
+              <div className="grid gap-6">
+                {advantages.map((adv, index) => (
+                  <div key={index} className="flex items-center gap-4 group">
+                    <div className="flex-shrink-0 w-8 h-8 bg-[#0d89b1]/10 text-[#0d89b1] rounded-full flex items-center justify-center group-hover:bg-[#0d89b1] group-hover:text-white transition-all">
+                      <CheckCircle size={18} />
+                    </div>
+                    <p className="text-gray-700 dark:text-gray-300 font-bold text-lg">{adv}</p>
                   </div>
-                  <p className="text-gray-700 dark:text-gray-300 font-black text-lg leading-tight uppercase tracking-tight">{item}</p>
-                </div>
-              ))}
+                ))}
+              </div>
+            </div>
+            <div className="relative">
+              <img
+                src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx1bml2ZXJzaXR5JTIwYnVpbGRpbmd8ZW58MXx8fHwxNzc1NDU4MzM1fDA&ixlib=rb-4.1.0&q=80&w=1080"
+                alt="Afzalliklar"
+                className="rounded-lg shadow-2xl"
+              />
+              <div className="absolute -bottom-8 -left-8 bg-[#0d89b1] p-10 rounded-lg text-white shadow-xl hidden md:block">
+                <div className="text-4xl font-black mb-2 tracking-tighter">100%</div>
+                <div className="text-xs font-black uppercase tracking-[0.2em] opacity-80">Natija kafolati</div>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Social Media Note */}
-      <section className="py-24 bg-[#0d89b1] text-white overflow-hidden relative">
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2"></div>
-        <div className="container mx-auto px-4 text-center relative z-10">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-          >
-            <h3 className="text-3xl md:text-6xl font-black mb-8 uppercase tracking-tighter">Bizni ijtimoiy tarmoqlarda kuzatib boring</h3>
-            <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto mb-12 leading-relaxed font-bold opacity-90 uppercase tracking-widest">
-              Litsey hayoti, tadbirlar, yangiliklar va qabul haqida eng so'nggi ma'lumotlarni rasmiy Instagram sahifamizdan oling:
-            </p>
-            <div className="inline-block bg-white text-[#0d89b1] px-12 py-8 rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.3)] transform hover:scale-110 transition-transform duration-500">
-              <p className="text-4xl md:text-6xl font-black tracking-tighter uppercase">📸 @fdtu1al.uz</p>
-            </div>
-            <p className="text-white/80 mt-10 font-black text-xl uppercase tracking-widest opacity-80">Tezkor javob va eng dolzarb yangiliklar shu yerda!</p>
-          </motion.div>
         </div>
       </section>
     </div>

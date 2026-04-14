@@ -1,4 +1,4 @@
-import { Mail, Award, CheckCircle, GraduationCap, Briefcase, Star, Loader2 } from 'lucide-react';
+import { Mail, Phone, Loader2 } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
@@ -9,12 +9,17 @@ export function TeachersPage() {
   const { t, i18n } = useTranslation();
   const [teachers, setTeachers] = useState<Teacher[]>([]);
   const [loading, setLoading] = useState(true);
+  const currentLang = i18n.language || 'uz';
 
   useEffect(() => {
     const fetchTeachers = async () => {
       try {
         const data = await teacherService.getAllTeachers();
-        setTeachers(data.results);
+        // Sort by sort_order and filter only active members
+        const activeTeachers = data.results
+          .filter(teacher => teacher.is_active)
+          .sort((a, b) => a.sort_order - b.sort_order);
+        setTeachers(activeTeachers);
       } catch (error) {
         console.error('Error fetching teachers:', error);
       } finally {
@@ -55,86 +60,72 @@ export function TeachersPage() {
       {/* Teachers Grid */}
       <section className="py-20 bg-gray-50 dark:bg-gray-900 transition-colors">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {teachers.map((teacher, index) => {
-              const translation = teacherService.getTranslation(teacher, i18n.language);
+              const translation = teacherService.getTranslation(teacher, currentLang);
               
               return (
-                <div
+                <motion.div
                   key={teacher.id}
-                  data-aos="fade-up"
-                  data-aos-delay={index * 50}
-                  className="bg-white dark:bg-gray-950 rounded-lg overflow-hidden shadow-xl hover:shadow-[0_20px_50px_rgba(0,0,0,0.15)] transition-all duration-500 group border border-gray-100 dark:border-gray-800 flex flex-col"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="bg-white dark:bg-gray-950 rounded-[10px] overflow-hidden shadow-lg border border-gray-100 dark:border-gray-800 flex flex-col group"
                 >
-                  {/* Image */}
-                  <div className="relative h-80 overflow-hidden bg-gray-200 dark:bg-gray-800">
-                    <img
-                      src={teacher.photo}
-                      alt={teacher.full_name}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                    {teacher.category_display && (
-                      <div className="absolute bottom-4 left-4 flex items-center gap-2 text-[10px] font-black text-white bg-[#0d89b1]/80 backdrop-blur-md px-4 py-2 rounded-full uppercase tracking-[0.2em] border border-white/20">
-                        <Star size={14} />
-                        <span>{teacher.category_display}</span>
-                      </div>
-                    )}
+                  {/* Image Section */}
+                  <div className="p-4">
+                    <div className="aspect-[4/5] overflow-hidden rounded-[10px] bg-gray-100 dark:bg-gray-800">
+                      <img
+                        src={teacher.photo}
+                        alt={teacher.full_name}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    </div>
                   </div>
 
-                  {/* Content */}
-                  <div className="p-8 flex-grow">
-                    <h3 className="text-2xl font-black text-gray-900 dark:text-white mb-2 leading-tight group-hover:text-[#0d89b1] transition-colors uppercase tracking-tight">
+                  {/* Content Section */}
+                  <div className="px-6 pb-8 flex flex-col flex-grow">
+                    <h3 className="text-2xl font-black text-[#1a2b3b] dark:text-white mb-2 leading-tight uppercase tracking-tight">
                       {teacher.full_name}
                     </h3>
                     
-                    <p className="text-[#0d89b1] font-black text-xs mb-6 uppercase tracking-[0.2em]">
+                    <p className="text-blue-600 font-black text-sm mb-4 uppercase tracking-widest">
                       {translation.position}
                     </p>
 
-                    <div className="space-y-4 mb-8">
-                      {translation.subject && (
-                        <div className="flex items-center gap-3 text-gray-600 dark:text-gray-400">
-                          <CheckCircle size={18} className="text-[#0d89b1] flex-shrink-0" />
-                          <span className="text-sm font-bold">{translation.subject}</span>
-                        </div>
+                    {(teacher.academic_degree || teacher.academic_rank) && (
+                      <p className="text-gray-600 dark:text-gray-400 text-sm font-medium italic mb-6 leading-relaxed">
+                        {[teacher.academic_degree, teacher.academic_rank].filter(Boolean).join(', ')}
+                      </p>
+                    )}
+
+                    <div className="mt-auto space-y-4">
+                      {teacher.phone && (
+                        <a
+                          href={`tel:${teacher.phone.replace(/\s/g, '')}`}
+                          className="flex items-center gap-4 text-gray-700 dark:text-gray-300 hover:text-blue-600 transition-colors group/link"
+                        >
+                          <div className="w-10 h-10 bg-blue-50 dark:bg-blue-900/20 rounded-full flex items-center justify-center text-blue-600 group-hover/link:bg-blue-600 group-hover/link:text-white transition-all duration-300">
+                            <Phone size={18} />
+                          </div>
+                          <span className="text-sm font-bold tracking-tight">{teacher.phone}</span>
+                        </a>
                       )}
 
-                      {teacher.academic_degree && (
-                        <div className="flex items-center gap-3 text-gray-600 dark:text-gray-400">
-                          <GraduationCap size={18} className="text-[#0d89b1] flex-shrink-0" />
-                          <span className="text-sm font-bold">{teacher.academic_degree} {teacher.academic_rank && `(${teacher.academic_rank})`}</span>
-                        </div>
-                      )}
-
-                      {teacher.experience_years > 0 && (
-                        <div className="flex items-center gap-3 text-gray-600 dark:text-gray-400">
-                          <Briefcase size={18} className="text-[#0d89b1] flex-shrink-0" />
-                          <span className="text-sm font-bold">{t('teachers.experience')}: {teacher.experience_years} {t('teachers.years')}</span>
-                        </div>
+                      {teacher.email && (
+                        <a
+                          href={`mailto:${teacher.email}`}
+                          className="flex items-center gap-4 text-gray-700 dark:text-gray-300 hover:text-red-500 transition-colors group/link"
+                        >
+                          <div className="w-10 h-10 bg-red-50 dark:bg-red-900/20 rounded-full flex items-center justify-center text-red-500 group-hover/link:bg-red-500 group-hover/link:text-white transition-all duration-300">
+                            <Mail size={18} />
+                          </div>
+                          <span className="text-sm font-bold tracking-tight lowercase">{teacher.email}</span>
+                        </a>
                       )}
                     </div>
-
-                    {translation.achievements && (
-                      <div className="bg-[#0d89b1]/5 p-4 rounded-lg border border-[#0d89b1]/10 mb-6">
-                        <p className="text-xs font-black uppercase tracking-widest text-[#0d89b1] mb-1">{t('teachers.achievements')}</p>
-                        <p className="text-gray-600 dark:text-gray-400 text-sm font-medium leading-relaxed italic">
-                          {translation.achievements}
-                        </p>
-                      </div>
-                    )}
-
-                    {teacher.email && (
-                      <a
-                        href={`mailto:${teacher.email}`}
-                        className="inline-flex items-center gap-2 text-gray-500 dark:text-gray-400 hover:text-[#0d89b1] transition-colors text-xs font-black uppercase tracking-widest"
-                      >
-                        <Mail size={16} />
-                        {teacher.email}
-                      </a>
-                    )}
                   </div>
-                </div>
+                </motion.div>
               );
             })}
           </div>

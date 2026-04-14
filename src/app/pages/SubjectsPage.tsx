@@ -1,88 +1,101 @@
-import { BookOpen, Atom, Calculator, Code, Globe, FlaskConical } from 'lucide-react';
+import { Calculator, FlaskConical, Globe, Cpu, Microscope, Zap } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+import { motion } from 'framer-motion';
 
 export function SubjectsPage() {
+  const { t } = useTranslation();
+
   const subjects = [
     {
       icon: Calculator,
-      name: 'Matematika',
-      description: 'Algebra, geometriya va matematik analiz bo\'yicha chuqur bilimlar. Olimpiada matematikasi kurslari.',
-      hours: '8 soat/hafta',
-      color: 'from-blue-500 to-blue-600',
+      name: t('subjects.math.name'),
+      description: t('subjects.math.desc'),
+      hours: 8,
     },
     {
-      icon: Atom,
-      name: 'Fizika',
-      description: 'Klassik va zamonaviy fizika, mexanika, elektrodinamika va kvant fizikasi asoslari.',
-      hours: '6 soat/hafta',
-      color: 'from-purple-500 to-purple-600',
+      icon: Zap,
+      name: t('subjects.physics.name'),
+      description: t('subjects.physics.desc'),
+      hours: 6,
     },
     {
       icon: FlaskConical,
-      name: 'Kimyo',
-      description: 'Organik va anorganik kimyo, kimyoviy reaksiyalar va laboratoriya tajribalari.',
-      hours: '5 soat/hafta',
-      color: 'from-green-500 to-green-600',
+      name: t('subjects.chemistry.name'),
+      description: t('subjects.chemistry.desc'),
+      hours: 5,
     },
     {
       icon: Globe,
-      name: 'Ingliz tili',
-      description: 'IELTS va CEFR standarti bo\'yicha ingliz tili, grammatika va lug\'at boyitish.',
-      hours: '6 soat/hafta',
-      color: 'from-red-500 to-red-600',
+      name: t('subjects.english.name'),
+      description: t('subjects.english.desc'),
+      hours: 6,
     },
     {
-      icon: Code,
-      name: 'Informatika',
-      description: 'Dasturlash asoslari (Python, C++), algoritmlar va ma\'lumotlar strukturasi.',
-      hours: '4 soat/hafta',
-      color: 'from-yellow-500 to-yellow-600',
+      icon: Cpu,
+      name: t('subjects.it.name'),
+      description: t('subjects.it.desc'),
+      hours: 4,
     },
     {
-      icon: BookOpen,
-      name: 'Biologiya',
-      description: 'Molekulyar biologiya, genetika, ekologiya va tirik organizmlar anatomiyasi.',
-      hours: '4 soat/hafta',
-      color: 'from-teal-500 to-teal-600',
+      icon: Microscope,
+      name: t('subjects.biology.name'),
+      description: t('subjects.biology.desc'),
+      hours: 4,
     },
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen overflow-hidden bg-white dark:bg-gray-950 transition-colors duration-300">
       {/* Page Header */}
-      <div className="bg-gradient-to-r from-[#0d89b1] to-[#0a6d8f] text-white py-20">
-        <div className="container mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">Fanlar</h1>
-          <p className="text-xl text-white/90 max-w-3xl">
-            Litseymizda o'qitiladigan asosiy fanlar va dasturlar
-          </p>
+      <div className="bg-gradient-to-r from-[#0d89b1] to-[#0a6d8f] text-white py-24 md:py-32 relative">
+        <div className="absolute inset-0 bg-black/10"></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <h1 className="text-4xl md:text-7xl font-black mb-6 tracking-tight uppercase">{t('nav.subjects')}</h1>
+            <p className="text-lg md:text-2xl text-white/90 max-w-3xl leading-relaxed font-bold opacity-90 uppercase tracking-widest">
+              {t('subjects.pageSubtitle')}
+            </p>
+          </motion.div>
         </div>
       </div>
 
       {/* Subjects Grid */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-gray-50 dark:bg-gray-900 transition-colors">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {subjects.map((subject, index) => {
               const Icon = subject.icon;
               return (
-                <div
+                <motion.div
                   key={index}
-                  className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="bg-white dark:bg-gray-950 rounded-2xl p-8 shadow-lg border border-gray-100 dark:border-gray-800 hover:shadow-2xl transition-all group"
                 >
-                  <div className={`bg-gradient-to-r ${subject.color} p-8 text-white`}>
-                    <Icon size={48} className="mb-4" />
-                    <h3 className="text-2xl font-bold">{subject.name}</h3>
-                  </div>
-                  <div className="p-6">
-                    <p className="text-gray-600 mb-4 leading-relaxed">
-                      {subject.description}
-                    </p>
-                    <div className="flex items-center justify-between pt-4 border-t border-gray-200">
-                      <span className="text-sm text-gray-500">Haftalik soat</span>
-                      <span className="font-semibold text-[#0d89b1]">{subject.hours}</span>
+                  <div className="flex items-center gap-6 mb-8">
+                    <div className="w-16 h-16 bg-[#0d89b1]/10 rounded-xl flex items-center justify-center group-hover:bg-[#0d89b1] group-hover:text-white transition-all duration-500 transform group-hover:rotate-6 shadow-inner">
+                      <Icon size={32} className="text-[#0d89b1] group-hover:text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-black text-gray-900 dark:text-white uppercase tracking-tight group-hover:text-[#0d89b1] transition-colors">
+                        {subject.name}
+                      </h3>
+                      <div className="flex items-center gap-2 text-xs font-black text-gray-400 dark:text-gray-500 uppercase tracking-widest">
+                        <span>{t('subjects.weeklyHours')}:</span>
+                        <span className="text-[#0d89b1]">{subject.hours} {t('subjects.hoursPerWeek')}</span>
+                      </div>
                     </div>
                   </div>
-                </div>
+                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed font-medium">
+                    {subject.description}
+                  </p>
+                </motion.div>
               );
             })}
           </div>

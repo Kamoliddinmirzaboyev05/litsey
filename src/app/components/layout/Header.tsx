@@ -42,7 +42,7 @@ export function Header() {
   const languages = [
     { code: 'uz', label: "O'zbek", flag: 'uz' },
     { code: 'ru', label: 'Русский', flag: 'ru' },
-    { code: 'kr', label: 'Ўзбекча', flag: 'uz' },
+    // { code: 'kr', label: 'Ўзбекча', flag: 'uz' },
   ];
 
   const currentLanguage = languages.find(l => l.code === i18n.language) || languages[0];
