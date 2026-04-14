@@ -1,4 +1,4 @@
-import { Mail, Phone, Loader2 } from 'lucide-react';
+import { Mail, Phone, Loader2, Award } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
@@ -70,60 +70,70 @@ export function TeachersPage() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="bg-white dark:bg-gray-950 rounded-[10px] overflow-hidden shadow-lg border border-gray-100 dark:border-gray-800 flex flex-col group"
+                  className="bg-white dark:bg-gray-950 rounded-[20px] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-800 flex flex-col group"
                 >
                   {/* Image Section */}
-                  <div className="p-4">
-                    <div className="aspect-[4/5] overflow-hidden rounded-[10px] bg-gray-100 dark:bg-gray-800">
+                  <div className="p-5">
+                    <div className="aspect-[4/5] overflow-hidden rounded-[15px] bg-gray-100 dark:bg-gray-800">
                       <img
                         src={teacher.photo}
                         alt={teacher.full_name}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                       />
                     </div>
                   </div>
 
                   {/* Content Section */}
-                  <div className="px-6 pb-8 flex flex-col flex-grow">
-                    <h3 className="text-2xl font-black text-[#1a2b3b] dark:text-white mb-2 leading-tight uppercase tracking-tight">
+                  <div className="px-8 pb-10 flex flex-col flex-grow">
+                    <h3 className="text-[28px] font-bold text-[#2d3e50] dark:text-white mb-6 leading-tight tracking-tight">
                       {teacher.full_name}
                     </h3>
                     
-                    <p className="text-blue-600 font-black text-sm mb-4 uppercase tracking-widest">
-                      {translation.position}
-                    </p>
+                    <div className="space-y-5">
+                      {/* Position */}
+                      <div className="flex items-start gap-4">
+                        <div className="mt-1 flex-shrink-0">
+                          <Award className="w-6 h-6 text-blue-500" />
+                        </div>
+                        <p className="text-[#334155] dark:text-gray-300 text-lg font-medium leading-snug">
+                          {translation.position}
+                        </p>
+                      </div>
 
-                    {(teacher.academic_degree || teacher.academic_rank) && (
-                      <p className="text-gray-600 dark:text-gray-400 text-sm font-medium italic mb-6 leading-relaxed">
-                        {[teacher.academic_degree, teacher.academic_rank].filter(Boolean).join(', ')}
-                      </p>
-                    )}
-
-                    <div className="mt-auto space-y-4">
+                      {/* Phone */}
                       {teacher.phone && (
                         <a
                           href={`tel:${teacher.phone.replace(/\s/g, '')}`}
-                          className="flex items-center gap-4 text-gray-700 dark:text-gray-300 hover:text-blue-600 transition-colors group/link"
+                          className="flex items-center gap-4 text-[#334155] dark:text-gray-300 hover:text-emerald-600 transition-colors group/link"
                         >
-                          <div className="w-10 h-10 bg-blue-50 dark:bg-blue-900/20 rounded-full flex items-center justify-center text-blue-600 group-hover/link:bg-blue-600 group-hover/link:text-white transition-all duration-300">
-                            <Phone size={18} />
+                          <div className="flex-shrink-0">
+                            <Phone className="w-6 h-6 text-emerald-500" />
                           </div>
-                          <span className="text-sm font-bold tracking-tight">{teacher.phone}</span>
+                          <span className="text-lg font-medium tracking-tight">{teacher.phone}</span>
                         </a>
                       )}
 
+                      {/* Email */}
                       {teacher.email && (
                         <a
                           href={`mailto:${teacher.email}`}
-                          className="flex items-center gap-4 text-gray-700 dark:text-gray-300 hover:text-red-500 transition-colors group/link"
+                          className="flex items-center gap-4 text-[#334155] dark:text-gray-300 hover:text-rose-500 transition-colors group/link"
                         >
-                          <div className="w-10 h-10 bg-red-50 dark:bg-red-900/20 rounded-full flex items-center justify-center text-red-500 group-hover/link:bg-red-500 group-hover/link:text-white transition-all duration-300">
-                            <Mail size={18} />
+                          <div className="flex-shrink-0">
+                            <Mail className="w-6 h-6 text-rose-500" />
                           </div>
-                          <span className="text-sm font-bold tracking-tight lowercase">{teacher.email}</span>
+                          <span className="text-lg font-medium tracking-tight">{teacher.email}</span>
                         </a>
                       )}
                     </div>
+
+                    {(teacher.academic_degree || teacher.academic_rank) && (
+                      <div className="mt-8 pt-6 border-t border-gray-100 dark:border-gray-800">
+                        <p className="text-gray-500 dark:text-gray-400 text-sm font-medium italic leading-relaxed">
+                          {[teacher.academic_degree, teacher.academic_rank].filter(Boolean).join(', ')}
+                        </p>
+                      </div>
+                    )}
                   </div>
                 </motion.div>
               );
