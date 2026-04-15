@@ -118,6 +118,7 @@
     "bio": "Biografiya"
   },
   "announcements": {
+    "important": "MUHIM",
     "pageSubtitle": "Litseymiz bo'yicha muhim e'lonlar va xabarlar",
     "contentTitle": "E'lon mazmuni",
     "backToList": "Barcha e'lonlarga qaytish",

@@ -4,6 +4,8 @@ import { HomePage } from './pages/HomePage';
 import { AboutPage } from './pages/AboutPage';
 import { LeadershipPage } from './pages/LeadershipPage';
 import { TeachersPage } from './pages/TeachersPage';
+import { LibraryPage } from './pages/LibraryPage';
+import { PhotosPage } from './pages/PhotosPage';
 import { AdmissionPage } from './pages/AdmissionPage';
 import { NewsPage } from './pages/NewsPage';
 import { NewsDetailPage } from './pages/NewsDetailPage';
@@ -12,6 +14,7 @@ import { AnnouncementsDetailPage } from './pages/AnnouncementsDetailPage';
 import { ContactPage } from './pages/ContactPage';
 import { SubjectsPage } from './pages/SubjectsPage';
 import { ProgramsPage } from './pages/ProgramsPage';
+import { SchedulePage } from './pages/SchedulePage';
 import { NotFoundPage } from './pages/NotFoundPage';
 
 export const router = createBrowserRouter([
@@ -25,6 +28,9 @@ export const router = createBrowserRouter([
       { path: 'teachers', Component: TeachersPage },
       { path: 'subjects', Component: SubjectsPage },
       { path: 'programs', Component: ProgramsPage },
+      { path: 'schedule', Component: SchedulePage },
+      { path: 'library', Component: LibraryPage },
+      { path: 'photos', Component: PhotosPage },
       { path: 'admission', Component: AdmissionPage },
       { path: 'news', Component: NewsPage },
       { path: 'news/:slug', Component: NewsDetailPage },

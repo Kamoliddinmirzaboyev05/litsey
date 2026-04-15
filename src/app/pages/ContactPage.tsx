@@ -50,7 +50,7 @@ export function ContactPage() {
   return (
     <div className="min-h-screen overflow-hidden bg-white dark:bg-gray-950 transition-colors duration-300">
       {/* Page Header */}
-      <div className="bg-gradient-to-r from-[#0d89b1] to-[#0a6d8f] text-white py-24 md:py-32 relative">
+      <div className="bg-gradient-to-r from-[#0d89b1] to-[#0d89b1] text-white py-24 md:py-32 relative">
         <div className="absolute inset-0 bg-black/10"></div>
         <div className="container mx-auto px-4 relative z-10">
           <motion.div
@@ -193,7 +193,7 @@ export function ContactPage() {
                   className={`w-full py-5 rounded-lg font-black uppercase tracking-widest transition-all duration-300 shadow-xl ${
                     submitted 
                       ? 'bg-green-500 text-white cursor-default' 
-                      : 'bg-[#0d89b1] text-white hover:bg-[#0a6d8f] hover:shadow-2xl transform hover:-translate-y-1'
+                      : 'bg-[#0d89b1] text-white hover:bg-[#0d89b1] hover:shadow-2xl transform hover:-translate-y-1'
                   }`}
                 >
                   {submitted ? (

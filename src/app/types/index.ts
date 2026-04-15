@@ -65,6 +65,27 @@ export interface AnnouncementResponse {
   results: Announcement[];
 }
 
+export interface FAQTranslation {
+  question: string;
+  answer: string;
+}
+
+export interface FAQItem {
+  id: number;
+  translations: {
+    uz: FAQTranslation;
+    uz_cyrl: FAQTranslation;
+    ru: FAQTranslation;
+    en: FAQTranslation;
+    [key: string]: FAQTranslation;
+  };
+  category: string;
+  category_display: string;
+  is_featured: boolean;
+  sort_order: number;
+  is_active: boolean;
+}
+
 export interface TeacherTranslation {
   position: string;
   subject: string;
@@ -131,11 +152,82 @@ export interface FAQItem {
   answer: string;
 }
 
+export interface StatTranslation {
+  label: string;
+}
+
 export interface StatItem {
   id: number;
-  value: string;
-  label: string;
+  key: string;
+  value: number | string;
+  translations: {
+    uz: StatTranslation;
+    uz_cyrl: StatTranslation;
+    ru: StatTranslation;
+    en: StatTranslation;
+    [key: string]: StatTranslation;
+  };
   icon: string;
+  sort_order: number;
+  updated_at: string;
+}
+
+export interface AdmissionDocumentTranslation {
+  document_name: string;
+  note: string;
+}
+
+export interface AdmissionDocument {
+  id: number;
+  translations: {
+    uz: AdmissionDocumentTranslation;
+    uz_cyrl: AdmissionDocumentTranslation;
+    ru: AdmissionDocumentTranslation;
+    en: AdmissionDocumentTranslation;
+    [key: string]: AdmissionDocumentTranslation;
+  };
+  document_file: string;
+  is_required: boolean;
+  sort_order: number;
+}
+
+export interface SubjectTranslation {
+  subject_name: string;
+  description: string;
+}
+
+export interface Subject {
+  id: number;
+  subject_type: string;
+  subject_type_display: string;
+  max_score: number;
+  sort_order: number;
+  translations: {
+    uz: SubjectTranslation;
+    uz_cyrl: SubjectTranslation;
+    ru: SubjectTranslation;
+    en: SubjectTranslation;
+    [key: string]: SubjectTranslation;
+  };
+}
+
+export interface SliderTranslation {
+  title: string;
+  description: string;
+}
+
+export interface SliderItem {
+  id: number;
+  image: string;
+  translations: {
+    uz: SliderTranslation;
+    uz_cyrl: SliderTranslation;
+    ru: SliderTranslation;
+    en: SliderTranslation;
+    [key: string]: SliderTranslation;
+  };
+  sort_order: number;
+  is_active: boolean;
 }
 
 export interface MenuItem {

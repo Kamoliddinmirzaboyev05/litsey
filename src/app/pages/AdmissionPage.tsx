@@ -49,7 +49,7 @@ export function AdmissionPage() {
   return (
     <div className="min-h-screen overflow-hidden bg-white dark:bg-gray-950 transition-colors duration-300">
       {/* Page Header */}
-      <div className="bg-gradient-to-r from-[#0d89b1] to-[#0a6d8f] text-white py-24 md:py-32 relative">
+      <div className="bg-gradient-to-r from-[#0d89b1] to-[#0d89b1] text-white py-24 md:py-32 relative">
         <div className="absolute inset-0 bg-black/10"></div>
         <div className="container mx-auto px-4 relative z-10">
           <motion.div

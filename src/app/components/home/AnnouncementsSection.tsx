@@ -69,36 +69,60 @@ export function AnnouncementsSection() {
                 key={announcement.id}
                 data-aos="fade-up"
                 data-aos-delay={index * 100}
-                className="group bg-gradient-to-br from-[#0d89b1] to-[#0a6d8f] rounded-lg p-8 text-white shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 relative overflow-hidden"
+                className="group relative bg-white dark:bg-gray-950 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100 dark:border-gray-800"
               >
-                {/* Decorative element */}
-                <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-bl-full -z-0 group-hover:scale-110 transition-transform duration-500"></div>
-                
-                <div className="relative z-10">
-                  <div className="flex items-start justify-between mb-6">
-                    <div className="w-14 h-14 bg-white/20 backdrop-blur-md rounded-md flex items-center justify-center shadow-inner group-hover:bg-white group-hover:text-[#0d89b1] transition-all duration-300">
-                      <Megaphone size={28} />
+                {/* Image Section */}
+                <div className="relative h-64 overflow-hidden">
+                  {announcement.image ? (
+                    <img
+                      src={announcement.image}
+                      alt={translation.title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-gradient-to-br from-[#0d89b1] to-[#0d89b1] flex items-center justify-center">
+                      <Megaphone size={48} className="text-white/20" />
                     </div>
-                    <div className="flex items-center gap-2 text-[10px] font-black bg-white/20 backdrop-blur-md px-4 py-2 rounded-full uppercase tracking-[0.2em] border border-white/10">
+                  )}
+                  
+                  {/* Floating Date Badge */}
+                  <div className="absolute top-4 right-4 bg-white/90 dark:bg-gray-950/90 backdrop-blur-md px-4 py-2 rounded-full shadow-lg z-10 border border-white/20">
+                    <div className="flex items-center gap-2 text-[10px] font-black text-[#0d89b1] uppercase tracking-[0.2em]">
                       <Calendar size={14} />
                       <span>{date}</span>
                     </div>
                   </div>
 
-                  <h3 className="text-xl md:text-2xl font-black mb-4 line-clamp-2 leading-tight group-hover:text-sky-100 transition-colors uppercase tracking-tight">
+                  {/* Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent opacity-60"></div>
+                </div>
+
+                <div className="p-8">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 bg-[#0d89b1]/10 rounded-xl flex items-center justify-center text-[#0d89b1]">
+                      <Megaphone size={20} />
+                    </div>
+                    {announcement.is_important && (
+                      <span className="text-[10px] font-black text-red-500 uppercase tracking-widest bg-red-50 dark:bg-red-900/20 px-3 py-1 rounded-full">
+                        {t('announcements.important', 'MUHIM')}
+                      </span>
+                    )}
+                  </div>
+
+                  <h3 className="text-xl font-black text-gray-900 dark:text-white mb-4 line-clamp-2 leading-tight uppercase tracking-tight group-hover:text-[#0d89b1] transition-colors">
                     {translation.title}
                   </h3>
 
-                  <p className="text-white/80 mb-8 line-clamp-3 leading-relaxed text-lg font-medium">
+                  <p className="text-gray-600 dark:text-gray-400 mb-8 line-clamp-2 leading-relaxed text-sm font-medium">
                     {translation.short_description}
                   </p>
 
                   <Link
                     to={`/announcements/${announcement.slug}`}
-                    className="inline-flex items-center gap-2 font-black uppercase tracking-[0.2em] text-xs hover:gap-4 transition-all group/link bg-white/10 hover:bg-white hover:text-[#0d89b1] px-6 py-3 rounded-md backdrop-blur-sm"
+                    className="inline-flex items-center gap-2 text-[#0d89b1] font-black uppercase tracking-[0.2em] text-xs hover:gap-4 transition-all group/link"
                   >
                     {t('home.announcements.details', 'Batafsil')}
-                    <ArrowRight size={20} className="group-hover/link:translate-x-1 transition-transform" />
+                    <ArrowRight size={18} className="group-hover/link:translate-x-1 transition-transform" />
                   </Link>
                 </div>
               </div>

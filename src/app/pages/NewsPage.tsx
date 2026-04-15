@@ -48,7 +48,7 @@ export function NewsPage() {
   return (
     <div className="min-h-screen">
       {/* Page Header */}
-      <div className="bg-gradient-to-r from-[#0d89b1] to-[#0a6d8f] text-white py-20">
+      <div className="bg-gradient-to-r from-[#0d89b1] to-[#0d89b1] text-white py-20">
         <div className="container mx-auto px-4">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">{t('nav.news')}</h1>
           <p className="text-xl text-white/90 max-w-3xl">
@@ -114,7 +114,7 @@ export function NewsPage() {
             <div className="flex justify-center mt-12">
               <button
                 onClick={() => setPage(prev => prev + 1)}
-                className="px-8 py-3 bg-[#0d89b1] text-white rounded-xl font-bold hover:bg-[#0a6d8f] transition-colors shadow-lg"
+                className="px-8 py-3 bg-[#0d89b1] text-white rounded-xl font-bold hover:bg-[#0d89b1] transition-colors shadow-lg"
               >
                 {t('common.loadMore', 'Yana yuklash')}
               </button>

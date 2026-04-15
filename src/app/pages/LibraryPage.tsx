@@ -35,7 +35,7 @@ export function LibraryPage() {
   return (
     <div className="min-h-screen overflow-hidden bg-white dark:bg-gray-950 transition-colors duration-300">
       {/* Page Header */}
-      <div className="bg-gradient-to-r from-[#0d89b1] to-[#0a6d8f] text-white py-24 md:py-32 relative">
+      <div className="bg-gradient-to-r from-[#0d89b1] to-[#0d89b1] text-white py-24 md:py-32 relative">
         <div className="absolute inset-0 bg-black/10"></div>
         <div className="container mx-auto px-4 relative z-10">
           <motion.div
@@ -82,7 +82,7 @@ export function LibraryPage() {
                     className="w-full pl-12 pr-6 py-5 bg-gray-50 dark:bg-gray-900 border-none rounded-lg focus:ring-2 focus:ring-[#0d89b1] outline-none text-gray-900 dark:text-white font-bold"
                   />
                 </div>
-                <button className="px-10 py-5 bg-[#0d89b1] text-white rounded-lg hover:bg-[#0a6d8f] transition-all font-black uppercase tracking-widest shadow-lg">
+                <button className="px-10 py-5 bg-[#0d89b1] text-white rounded-lg hover:bg-[#0d89b1] transition-all font-black uppercase tracking-widest shadow-lg">
                   {t('library.searchBtn')}
                 </button>
               </div>
@@ -90,7 +90,7 @@ export function LibraryPage() {
 
             {/* Resources List */}
             <div className="bg-white dark:bg-gray-950 rounded-lg shadow-2xl overflow-hidden border border-gray-100 dark:border-gray-800">
-              <div className="bg-gradient-to-r from-[#0d89b1] to-[#0a6d8f] p-8 text-white">
+              <div className="bg-gradient-to-r from-[#0d89b1] to-[#0d89b1] p-8 text-white">
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-white/20 backdrop-blur-md rounded-md flex items-center justify-center">
                     <BookOpen size={28} />

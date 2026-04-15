@@ -144,12 +144,12 @@ export function Header() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-           <Link to="/" className="flex items-center gap-2 md:gap-3 group">
+           <Link to="/" className="flex items-center gap-2 md:gap-3 group shrink-0">
              <div className="relative overflow-hidden rounded-lg p-1 bg-gray-50 dark:bg-gray-900 group-hover:bg-blue-50 dark:group-hover:bg-blue-900/20 transition-colors shadow-sm">
-               <img src={contactInfo.logo || "/logoicon.png"} alt={siteName.short_name} className="w-10 h-10 md:w-14 md:h-14 object-contain" />
+               <img src={contactInfo.logo || "/logoicon.png"} alt={siteName.short_name} className="w-8 h-8 md:w-14 md:h-14 object-contain" />
              </div>
              <div>
-               <div className="text-sm md:text-lg font-black text-gray-900 dark:text-white leading-tight uppercase tracking-tight">
+               <div className="text-xs md:text-lg font-black text-gray-900 dark:text-white leading-tight uppercase tracking-tight max-w-[120px] md:max-w-none">
                  {siteName.short_name}
                </div>
              </div>

@@ -21,7 +21,7 @@ export function NotFoundPage() {
         <div className="flex flex-wrap justify-center gap-4">
           <Link
             to="/"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-[#0d89b1] text-white rounded-lg hover:bg-[#0a6d8f] transition-all font-black uppercase tracking-widest shadow-lg hover:shadow-2xl transform hover:-translate-y-1"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-[#0d89b1] text-white rounded-lg hover:bg-[#0d89b1] transition-all font-black uppercase tracking-widest shadow-lg hover:shadow-2xl transform hover:-translate-y-1"
           >
             <Home size={20} />
             {t('notFound.homeBtn')}

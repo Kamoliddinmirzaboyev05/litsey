@@ -60,7 +60,7 @@ export function NewsDetailPage() {
           <p className="text-gray-600 dark:text-gray-400 mb-8 font-medium">{t('common.notFound', 'Kechirasiz, ushbu yangilik topilmadi yoki o\'chirilgan.')}</p>
           <Link 
             to="/news" 
-            className="inline-flex items-center justify-center gap-2 w-full py-4 bg-[#0d89b1] text-white rounded-2xl font-black uppercase tracking-widest text-sm hover:bg-[#0a6d8f] transition-all shadow-lg shadow-[#0d89b1]/20"
+            className="inline-flex items-center justify-center gap-2 w-full py-4 bg-[#0d89b1] text-white rounded-2xl font-black uppercase tracking-widest text-sm hover:bg-[#0d89b1] transition-all shadow-lg shadow-[#0d89b1]/20"
           >
             <ArrowLeft size={20} />
             {t('nav.news', 'Yangiliklarga qaytish')}

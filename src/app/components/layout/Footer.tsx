@@ -26,7 +26,7 @@ export function Footer() {
           {/* About */}
           <div className="space-y-6">
             <div className="flex items-center gap-3">
-              <div className="w-14 h-14 bg-gradient-to-br from-[#0d89b1] to-[#0a6d8f] rounded-2xl flex items-center justify-center text-white font-black text-xl shadow-lg overflow-hidden p-1">
+              <div className="w-14 h-14 bg-gradient-to-br from-[#0d89b1] to-[#0d89b1] rounded-2xl flex items-center justify-center text-white font-black text-xl shadow-lg overflow-hidden p-1">
                 {contactInfo.logo ? (
                   <img src={contactInfo.logo} alt={siteName.short_name} className="w-full h-full object-contain" />
                 ) : (

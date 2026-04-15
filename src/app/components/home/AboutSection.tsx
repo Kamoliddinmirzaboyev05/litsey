@@ -82,7 +82,7 @@ export function AboutSection() {
 
             <Link
               to="/about"
-              className="inline-flex items-center gap-3 px-10 py-5 bg-[#0d89b1] text-white rounded-lg hover:bg-[#0a6d8f] transition-all duration-300 font-black uppercase tracking-widest shadow-xl hover:shadow-2xl transform hover:-translate-y-1"
+              className="inline-flex items-center gap-3 px-10 py-5 bg-[#0d89b1] text-white rounded-lg hover:bg-[#0d89b1] transition-all duration-300 font-black uppercase tracking-widest shadow-xl hover:shadow-2xl transform hover:-translate-y-1"
             >
               {t('home.readMore')}
             </Link>
