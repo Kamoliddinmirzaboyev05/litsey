@@ -4,6 +4,10 @@ import { HomePage } from './pages/HomePage';
 import { AboutPage } from './pages/AboutPage';
 import { LeadershipPage } from './pages/LeadershipPage';
 import { TeachersPage } from './pages/TeachersPage';
+import { DepartmentsPage } from './pages/DepartmentsPage';
+import { GalleryPage } from './pages/GalleryPage';
+import { VideosPage } from './pages/VideosPage';
+import { InfrastructurePage } from './pages/InfrastructurePage';
 import { LibraryPage } from './pages/LibraryPage';
 import { PhotosPage } from './pages/PhotosPage';
 import { AdmissionPage } from './pages/AdmissionPage';
@@ -26,6 +30,10 @@ export const router = createBrowserRouter([
       { path: 'about', Component: AboutPage },
       { path: 'leadership', Component: LeadershipPage },
       { path: 'teachers', Component: TeachersPage },
+      { path: 'departments', Component: DepartmentsPage },
+      { path: 'gallery', Component: GalleryPage },
+      { path: 'videos', Component: VideosPage },
+      { path: 'infrastructure', Component: InfrastructurePage },
       { path: 'subjects', Component: SubjectsPage },
       { path: 'programs', Component: ProgramsPage },
       { path: 'schedule', Component: SchedulePage },

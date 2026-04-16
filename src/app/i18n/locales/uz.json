@@ -8,8 +8,13 @@
     "contact": "Bog'lanish",
     "leadership": "Rahbariyat",
     "structure": "Tuzilma",
+    "departments": "Kafedralar",
     "activity": "Faoliyat",
     "subjects": "Fanlar",
+    "gallery": "Galereya",
+    "photos": "Foto lavhalar",
+    "videos": "Video lavhalar",
+    "infrastructure": "Litseyning moddiy texnik bazasi",
     "programs": "O'quv dasturlari",
     "education": "Ta'lim",
     "schedule": "Dars jadvali",
@@ -273,6 +278,21 @@
     "lesson": "dars",
     "break": "Tanaffus (tushlik)",
     "downloadBtn": "To'liq dars jadvalini yuklab olish"
+  },
+  "departments": {
+    "pageSubtitle": "Litseymizning kafedralari va ularning faoliyati",
+    "head": "Kafedra mudiri",
+    "subjects": "Fanlar",
+    "room": "Xona",
+    "phone": "Telefon",
+    "email": "Email",
+    "teachers": "O'qituvchilar soni"
+  },
+  "gallery": {
+    "pageSubtitle": "Litsey hayotidan yorqin lavhalar va tadbirlar",
+    "photos": "rasmlar",
+    "viewMore": "Barchasini ko'rish",
+    "date": "Sana"
   },
   "programs": {
     "pageSubtitle": "Litseymizning zamonaviy o'quv dasturlari va yo'nalishlari",

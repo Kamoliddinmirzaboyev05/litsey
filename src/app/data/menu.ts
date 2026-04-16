@@ -12,6 +12,7 @@ export const menuItems: MenuItem[] = [
       { label: 'nav.about', href: '/about' },
       { label: 'nav.leadership', href: '/leadership' },
       { label: 'nav.teachers', href: '/teachers' },
+      { label: 'nav.departments', href: '/departments' },
     ],
   },
   {
@@ -20,6 +21,15 @@ export const menuItems: MenuItem[] = [
     children: [
       { label: 'nav.subjects', href: '/subjects' },
       { label: 'nav.programs', href: '/programs' },
+    ],
+  },
+  {
+    label: 'nav.gallery',
+    href: '#',
+    children: [
+      { label: 'nav.photos', href: '/gallery' },
+      { label: 'nav.videos', href: '/videos' },
+      { label: 'nav.infrastructure', href: '/infrastructure' },
     ],
   },
   {

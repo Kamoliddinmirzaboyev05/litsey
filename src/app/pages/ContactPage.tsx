@@ -41,10 +41,10 @@ export function ContactPage() {
   };
 
   const socialIcons = [
-    { icon: Facebook, href: socialLinks.facebook, color: "text-blue-700", hover: "hover:bg-blue-700", show: !!socialLinks.facebook },
-    { icon: Instagram, href: socialLinks.instagram, color: "text-pink-600", hover: "hover:bg-pink-600", show: !!socialLinks.instagram },
-    { icon: Send, href: socialLinks.telegram, color: "text-blue-500", hover: "hover:bg-blue-500", show: !!socialLinks.telegram },
-    { icon: Youtube, href: socialLinks.youtube, color: "text-red-600", hover: "hover:bg-red-600", show: !!socialLinks.youtube }
+    { icon: Facebook, label: "Facebook", href: socialLinks.facebook, color: "text-blue-700", hover: "hover:bg-blue-700", show: !!socialLinks.facebook },
+    { icon: Instagram, label: "Instagram", href: socialLinks.instagram, color: "text-pink-600", hover: "hover:bg-pink-600", show: !!socialLinks.instagram },
+    { icon: Send, label: "Telegram", href: socialLinks.telegram, color: "text-blue-500", hover: "hover:bg-blue-500", show: !!socialLinks.telegram },
+    { icon: Youtube, label: "YouTube", href: socialLinks.youtube, color: "text-red-600", hover: "hover:bg-red-600", show: !!socialLinks.youtube }
   ].filter(s => s.show);
 
   return (
@@ -210,8 +210,8 @@ export function ContactPage() {
 
             {/* Social & Map */}
             <div className="space-y-8" data-aos="fade-left">
-              <div className="bg-gray-900 rounded-lg p-10 text-white shadow-2xl relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-bl-full"></div>
+              <div className="bg-white dark:bg-gray-950 rounded-lg p-10 text-gray-900 dark:text-white shadow-2xl relative overflow-hidden border border-gray-100 dark:border-gray-800">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-gray-50 dark:bg-white/5 rounded-bl-full"></div>
                 <h3 className="text-2xl font-black mb-8 uppercase tracking-tight relative z-10">{t('footer.socials')}</h3>
                 <div className="grid grid-cols-2 gap-4 relative z-10">
                   {socialIcons.map((social, idx) => (
@@ -220,12 +220,15 @@ export function ContactPage() {
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-4 bg-white/5 p-4 rounded-lg hover:bg-white/10 transition-all group"
+                      className="flex items-center gap-4 bg-gray-50 dark:bg-white/5 p-4 rounded-xl hover:bg-white dark:hover:bg-white/10 transition-all group border border-gray-100 dark:border-white/5 shadow-sm hover:shadow-md"
                     >
-                      <div className={`w-10 h-10 rounded-md bg-white/10 flex items-center justify-center group-hover:scale-110 transition-transform ${social.color}`}>
-                        <social.icon size={20} />
+                      <div className={`w-12 h-12 rounded-lg bg-white dark:bg-gray-800 shadow-sm flex items-center justify-center group-hover:scale-110 transition-transform ${social.color}`}>
+                        <social.icon size={24} />
                       </div>
-                      <span className="font-bold text-sm uppercase tracking-widest">{social.icon.name}</span>
+                      <div className="flex flex-col">
+                        <span className="font-black text-[10px] md:text-xs uppercase tracking-[0.2em] text-gray-400 dark:text-gray-500 mb-1">{t('footer.socials')}</span>
+                        <span className="font-black text-sm md:text-base uppercase tracking-tight text-gray-900 dark:text-white leading-none">{social.label}</span>
+                      </div>
                     </a>
                   ))}
                 </div>

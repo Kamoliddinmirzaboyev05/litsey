@@ -75,7 +75,7 @@ export function StatisticsSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           {stats.map((stat, index) => {
             const Icon = iconMap[stat.icon] || Users;
             const translation = statisticService.getTranslation(stat, i18n.language);
@@ -90,17 +90,17 @@ export function StatisticsSection() {
                 key={stat.id}
                 data-aos="fade-up"
                 data-aos-delay={index * 100}
-                className="group relative bg-white/5 backdrop-blur-xl rounded-[30px] md:rounded-[40px] p-8 md:p-12 text-center border border-white/10 hover:bg-white/10 transition-all duration-700 hover:-translate-y-3 hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] overflow-hidden"
+                className="group relative bg-white/5 backdrop-blur-xl rounded-xl p-8 text-center border border-white/10 hover:bg-white/10 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)] overflow-hidden"
               >
                 {/* Decorative glow */}
-                <div className="absolute -top-24 -right-24 w-48 h-48 bg-[#0d89b1]/20 rounded-full blur-3xl group-hover:bg-[#0d89b1]/30 transition-all duration-700"></div>
+                <div className="absolute -top-12 -right-12 w-24 h-24 bg-[#0d89b1]/10 rounded-full blur-2xl group-hover:bg-[#0d89b1]/20 transition-all duration-500"></div>
                 
                 <div className="relative z-10">
-                  <div className="w-16 h-16 md:w-20 md:h-20 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-6 md:mb-8 group-hover:bg-[#0d89b1] group-hover:text-white transition-all duration-500 transform group-hover:rotate-12 shadow-2xl border border-white/5">
-                    <Icon size={32} className="md:w-10 md:h-10 text-[#0d89b1] group-hover:text-white transition-colors duration-500" />
+                  <div className="w-14 h-14 bg-white/10 rounded-lg flex items-center justify-center mx-auto mb-6 group-hover:bg-[#0d89b1] group-hover:text-white transition-all duration-500 transform group-hover:scale-110 shadow-xl border border-white/5">
+                    <Icon size={24} className="text-[#0d89b1] group-hover:text-white transition-colors duration-500" />
                   </div>
                   
-                  <div className="text-5xl md:text-7xl font-black text-white mb-3 md:mb-4 tracking-tighter flex items-center justify-center">
+                  <div className="text-4xl md:text-5xl font-black text-white mb-2 tracking-tighter">
                     {inView ? (
                       <CountUp end={numericValue} duration={3} suffix={suffix} />
                     ) : (
@@ -108,7 +108,7 @@ export function StatisticsSection() {
                     )}
                   </div>
                   
-                  <div className="text-xs md:text-sm font-black text-[#0d89b1] uppercase tracking-[0.3em] opacity-80 group-hover:opacity-100 transition-opacity">
+                  <div className="text-[10px] md:text-xs font-black text-[#0d89b1] uppercase tracking-[0.2em] opacity-80 group-hover:opacity-100 transition-opacity">
                     {translation.label}
                   </div>
                 </div>

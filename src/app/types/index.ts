@@ -230,6 +230,132 @@ export interface SliderItem {
   is_active: boolean;
 }
 
+export interface DepartmentTranslation {
+  name: string;
+  description: string;
+}
+
+export interface DepartmentHead {
+  id: number;
+  full_name: string;
+  position: string;
+}
+
+export interface Department {
+  id: number;
+  slug: string;
+  translations: {
+    uz: DepartmentTranslation;
+    uz_cyrl: DepartmentTranslation;
+    ru: DepartmentTranslation;
+    en: DepartmentTranslation;
+    [key: string]: DepartmentTranslation;
+  };
+  head_teacher: DepartmentHead;
+  subjects: string[];
+  room_number: string;
+  phone: string;
+  email: string;
+  teachers_count: number;
+  sort_order: number;
+  is_active: boolean;
+  created_at: string;
+}
+
+export interface AlbumTranslation {
+  title: string;
+  description: string;
+}
+
+export interface Album {
+  id: number;
+  slug: string;
+  translations: {
+    uz: AlbumTranslation;
+    uz_cyrl: AlbumTranslation;
+    ru: AlbumTranslation;
+    en: AlbumTranslation;
+    [key: string]: AlbumTranslation;
+  };
+  cover_image: string;
+  event_date: string;
+  photos_count: number;
+  is_active: boolean;
+  sort_order: number;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface AlbumResponse {
+  count: number;
+  next: string | null;
+  previous: string | null;
+  results: Album[];
+}
+
+export interface DepartmentTranslation {
+  name: string;
+  description: string;
+}
+
+export interface DepartmentHead {
+  id: number;
+  full_name: string;
+  position: string;
+}
+
+export interface Department {
+  id: number;
+  slug: string;
+  translations: {
+    uz: DepartmentTranslation;
+    uz_cyrl: DepartmentTranslation;
+    ru: DepartmentTranslation;
+    en: DepartmentTranslation;
+    [key: string]: DepartmentTranslation;
+  };
+  head_teacher: DepartmentHead;
+  subjects: string[];
+  room_number: string;
+  phone: string;
+  email: string;
+  teachers_count: number;
+  sort_order: number;
+  is_active: boolean;
+  created_at: string;
+}
+
+export interface AlbumTranslation {
+  title: string;
+  description: string;
+}
+
+export interface Album {
+  id: number;
+  slug: string;
+  translations: {
+    uz: AlbumTranslation;
+    uz_cyrl: AlbumTranslation;
+    ru: AlbumTranslation;
+    en: AlbumTranslation;
+    [key: string]: AlbumTranslation;
+  };
+  cover_image: string;
+  event_date: string;
+  photos_count: number;
+  is_active: boolean;
+  sort_order: number;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface AlbumResponse {
+  count: number;
+  next: string | null;
+  previous: string | null;
+  results: Album[];
+}
+
 export interface MenuItem {
   label: string;
   href: string;
