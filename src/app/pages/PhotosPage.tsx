@@ -1,10 +1,17 @@
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
-import { Calendar } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
+import { Skeleton } from '../components/ui/skeleton';
 
 export function PhotosPage() {
   const { t } = useTranslation();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 800);
+    return () => clearTimeout(timer);
+  }, []);
 
   const photoGalleries = [
     {
@@ -47,80 +54,58 @@ export function PhotosPage() {
     },
   ];
 
+  const allPhotos = photoGalleries.flatMap(gallery => gallery.photos);
+
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-950 transition-colors duration-300">
+    <div className="min-h-screen bg-[#f8f9fa] dark:bg-gray-950 transition-colors duration-300">
       {/* Page Header */}
-      <div className="bg-gradient-to-r from-[#0d89b1] to-[#0d89b1] text-white py-24 md:py-32 relative">
-        <div className="absolute inset-0 bg-black/10"></div>
-        <div className="container mx-auto px-4 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h1 className="text-4xl md:text-7xl font-black mb-6 tracking-tight uppercase">{t('nav.activity')}</h1>
-            <p className="text-lg md:text-2xl text-white/90 max-w-3xl leading-relaxed font-bold opacity-90 uppercase tracking-widest">
-              {t('photos.pageSubtitle')}
-            </p>
-          </motion.div>
+      <div className="py-12 bg-white dark:bg-gray-950">
+        <div className="container mx-auto px-4 text-center">
+          <div className="inline-block relative">
+            <div className="border-t border-b border-gray-200 dark:border-gray-800 py-4 px-12">
+              <motion.h1
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white uppercase tracking-[0.2em]"
+              >
+                FOTO LAVHALAR
+              </motion.h1>
+            </div>
+          </div>
         </div>
       </div>
 
       {/* Gallery Grid */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+      <section className="py-12 bg-[#f8f9fa] dark:bg-gray-950 transition-colors duration-300">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            {photoGalleries.map((gallery, index) => (
-              <motion.div
-                key={gallery.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-white dark:bg-gray-950 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group cursor-pointer border border-gray-100 dark:border-gray-800"
-              >
-                {/* Main Photo */}
-                <div className="relative h-80 overflow-hidden bg-gray-200 dark:bg-gray-800">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 max-w-7xl mx-auto">
+            {loading ? (
+              Array.from({ length: 8 }).map((_, i) => (
+                <Skeleton key={i} className="aspect-square rounded-md" />
+              ))
+            ) : (
+              allPhotos.map((photo, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: (index % 8) * 0.05 }}
+                  className="aspect-square relative overflow-hidden rounded-md shadow-sm hover:shadow-md transition-all duration-300 group cursor-default bg-white dark:bg-gray-800"
+                >
                   <ImageWithFallback
-                    src={gallery.photos[0]}
-                    alt={gallery.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    src={photo}
+                    alt={`Photo ${index + 1}`}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-                  <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
-                    <div className="flex items-center gap-2 text-xs font-black uppercase tracking-widest mb-3 opacity-80">
-                      <Calendar size={16} className="text-[#0d89b1]" />
-                      <span>{gallery.date}</span>
-                    </div>
-                    <h3 className="text-2xl font-black uppercase tracking-tight">{gallery.title}</h3>
-                  </div>
-                </div>
-
-                {/* Thumbnail Grid */}
-                <div className="grid grid-cols-3 gap-2 p-2 bg-white dark:bg-gray-950">
-                  {gallery.photos.slice(1, 3).map((photo, idx) => (
-                    <div key={idx} className="relative h-24 rounded-lg overflow-hidden border border-gray-100 dark:border-gray-800">
-                      <ImageWithFallback
-                        src={photo}
-                        alt={`${gallery.title} ${idx + 2}`}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                  ))}
-                  {gallery.count > 3 && (
-                    <div className="relative h-24 rounded-lg overflow-hidden bg-[#0d89b1] flex items-center justify-center text-white shadow-inner">
-                      <div className="text-center">
-                        <div className="text-2xl font-black">+{gallery.count - 3}</div>
-                        <div className="text-[10px] font-black uppercase tracking-widest opacity-80">{t('photos.others')}</div>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              ))
+            )}
           </div>
         </div>
       </section>
     </div>
   );
 }
+

@@ -1,9 +1,10 @@
-import { Mail, Phone, Loader2, Award } from 'lucide-react';
+import { Mail, Phone, Award } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { teacherService } from '../services/teacherService';
 import { Teacher } from '../types';
+import { Skeleton } from '../components/ui/skeleton';
 
 export function TeachersPage() {
   const { t, i18n } = useTranslation();
@@ -30,14 +31,6 @@ export function TeachersPage() {
     fetchTeachers();
   }, []);
 
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-950">
-        <Loader2 className="w-12 h-12 text-[#0d89b1] animate-spin" />
-      </div>
-    );
-  }
-
   return (
     <div className="min-h-screen overflow-hidden bg-white dark:bg-gray-950 transition-colors duration-300">
       {/* Page Header */}
@@ -61,83 +54,99 @@ export function TeachersPage() {
       <section className="py-20 bg-gray-50 dark:bg-gray-900 transition-colors">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-            {teachers.map((teacher, index) => {
-              const translation = teacherService.getTranslation(teacher, currentLang);
-              
-              return (
-                <motion.div
-                  key={teacher.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="bg-white dark:bg-gray-950 rounded-[20px] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-800 flex flex-col group"
-                >
-                  {/* Image Section */}
-                  <div className="p-5">
-                    <div className="aspect-[4/5] overflow-hidden rounded-[15px] bg-gray-100 dark:bg-gray-800">
-                      <img
-                        src={teacher.photo}
-                        alt={teacher.full_name}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                      />
+            {loading ? (
+              Array.from({ length: 6 }).map((_, i) => (
+                <div key={i} className="bg-white dark:bg-gray-950 rounded-[20px] overflow-hidden shadow-sm p-5 border border-gray-100 dark:border-gray-800">
+                  <Skeleton className="aspect-[4/5] rounded-[15px] w-full mb-6" />
+                  <div className="px-3 pb-5">
+                    <Skeleton className="h-8 w-3/4 mb-6" />
+                    <div className="space-y-4">
+                      <Skeleton className="h-6 w-full" />
+                      <Skeleton className="h-6 w-2/3" />
+                      <Skeleton className="h-6 w-1/2" />
                     </div>
                   </div>
+                </div>
+              ))
+            ) : (
+              teachers.map((teacher, index) => {
+                const translation = teacherService.getTranslation(teacher, currentLang);
+                
+                return (
+                  <motion.div
+                    key={teacher.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className="bg-white dark:bg-gray-950 rounded-[20px] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-800 flex flex-col group"
+                  >
+                    {/* Image Section */}
+                    <div className="p-5">
+                      <div className="aspect-[4/5] overflow-hidden rounded-[15px] bg-gray-100 dark:bg-gray-800">
+                        <img
+                          src={teacher.photo}
+                          alt={teacher.full_name}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                        />
+                      </div>
+                    </div>
 
-                  {/* Content Section */}
-                  <div className="px-8 pb-10 flex flex-col flex-grow">
-                    <h3 className="text-[28px] font-bold text-[#2d3e50] dark:text-white mb-6 leading-tight tracking-tight">
-                      {teacher.full_name}
-                    </h3>
-                    
-                    <div className="space-y-5">
-                      {/* Position */}
-                      <div className="flex items-start gap-4">
-                        <div className="mt-1 flex-shrink-0">
-                          <Award className="w-6 h-6 text-blue-500" />
+                    {/* Content Section */}
+                    <div className="px-8 pb-10 flex flex-col flex-grow">
+                      <h3 className="text-[28px] font-bold text-[#2d3e50] dark:text-white mb-6 leading-tight tracking-tight">
+                        {teacher.full_name}
+                      </h3>
+                      
+                      <div className="space-y-5">
+                        {/* Position */}
+                        <div className="flex items-start gap-4">
+                          <div className="mt-1 flex-shrink-0">
+                            <Award className="w-6 h-6 text-blue-500" />
+                          </div>
+                          <p className="text-[#334155] dark:text-gray-300 text-lg font-medium leading-snug">
+                            {translation.position}
+                          </p>
                         </div>
-                        <p className="text-[#334155] dark:text-gray-300 text-lg font-medium leading-snug">
-                          {translation.position}
-                        </p>
+
+                        {/* Phone */}
+                        {teacher.phone && (
+                          <a
+                            href={`tel:${teacher.phone.replace(/\s/g, '')}`}
+                            className="flex items-center gap-4 text-[#334155] dark:text-gray-300 hover:text-emerald-600 transition-colors group/link"
+                          >
+                            <div className="flex-shrink-0">
+                              <Phone className="w-6 h-6 text-emerald-500" />
+                            </div>
+                            <span className="text-lg font-medium tracking-tight">{teacher.phone}</span>
+                          </a>
+                        )}
+
+                        {/* Email */}
+                        {teacher.email && (
+                          <a
+                            href={`mailto:${teacher.email}`}
+                            className="flex items-center gap-4 text-[#334155] dark:text-gray-300 hover:text-rose-500 transition-colors group/link"
+                          >
+                            <div className="flex-shrink-0">
+                              <Mail className="w-6 h-6 text-rose-500" />
+                            </div>
+                            <span className="text-lg font-medium tracking-tight">{teacher.email}</span>
+                          </a>
+                        )}
                       </div>
 
-                      {/* Phone */}
-                      {teacher.phone && (
-                        <a
-                          href={`tel:${teacher.phone.replace(/\s/g, '')}`}
-                          className="flex items-center gap-4 text-[#334155] dark:text-gray-300 hover:text-emerald-600 transition-colors group/link"
-                        >
-                          <div className="flex-shrink-0">
-                            <Phone className="w-6 h-6 text-emerald-500" />
-                          </div>
-                          <span className="text-lg font-medium tracking-tight">{teacher.phone}</span>
-                        </a>
-                      )}
-
-                      {/* Email */}
-                      {teacher.email && (
-                        <a
-                          href={`mailto:${teacher.email}`}
-                          className="flex items-center gap-4 text-[#334155] dark:text-gray-300 hover:text-rose-500 transition-colors group/link"
-                        >
-                          <div className="flex-shrink-0">
-                            <Mail className="w-6 h-6 text-rose-500" />
-                          </div>
-                          <span className="text-lg font-medium tracking-tight">{teacher.email}</span>
-                        </a>
+                      {(teacher.academic_degree || teacher.academic_rank) && (
+                        <div className="mt-8 pt-6 border-t border-gray-100 dark:border-gray-800">
+                          <p className="text-gray-500 dark:text-gray-400 text-sm font-medium italic leading-relaxed">
+                            {[teacher.academic_degree, teacher.academic_rank].filter(Boolean).join(', ')}
+                          </p>
+                        </div>
                       )}
                     </div>
-
-                    {(teacher.academic_degree || teacher.academic_rank) && (
-                      <div className="mt-8 pt-6 border-t border-gray-100 dark:border-gray-800">
-                        <p className="text-gray-500 dark:text-gray-400 text-sm font-medium italic leading-relaxed">
-                          {[teacher.academic_degree, teacher.academic_rank].filter(Boolean).join(', ')}
-                        </p>
-                      </div>
-                    )}
-                  </div>
-                </motion.div>
-              );
-            })}
+                  </motion.div>
+                );
+              })
+            )}
           </div>
         </div>
       </section>

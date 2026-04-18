@@ -15,7 +15,9 @@ export function SchedulePage() {
     const fetchDocuments = async () => {
       try {
         const data = await admissionService.getAdmissionDocuments();
-        setDocuments(data);
+        // Sort documents by sort_order
+        const sortedData = [...data].sort((a, b) => a.sort_order - b.sort_order);
+        setDocuments(sortedData);
       } catch (error) {
         console.error('Error fetching admission documents:', error);
       } finally {
@@ -25,17 +27,6 @@ export function SchedulePage() {
 
     fetchDocuments();
   }, []);
-
-  // Find the specific schedule document from API
-  const scheduleDocs = documents.filter(doc => {
-    const trans = admissionService.getTranslation(doc, 'uz');
-    return trans.document_name.toLowerCase().includes('dars jadvali');
-  });
-
-  const courses = [
-    { id: 1, name: '1-kurs', file: scheduleDocs[0]?.document_file },
-    { id: 2, name: '2-kurs', file: scheduleDocs[1]?.document_file || scheduleDocs[0]?.document_file },
-  ];
 
   if (loading) {
     return (
@@ -69,7 +60,7 @@ export function SchedulePage() {
             animate={{ opacity: 1, y: 0 }}
             className="text-2xl md:text-4xl font-black text-gray-900 dark:text-white uppercase tracking-tight"
           >
-            O'QUVCHILARNING DARS JADVALI
+            {t('nav.schedule')}
           </motion.h1>
         </div>
       </div>
@@ -78,28 +69,46 @@ export function SchedulePage() {
       <section className="py-12 md:py-16 bg-white dark:bg-gray-950">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto space-y-4">
-            {courses.map((course, index) => (
-              <motion.div
-                key={course.id}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-              >
-                <a
-                  href={course.file || '#'}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-between p-6 bg-gray-50 dark:bg-gray-900 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-all group"
-                >
-                  <span className="text-xl font-black text-gray-900 dark:text-white uppercase tracking-tight">
-                    {course.name}
-                  </span>
-                  <div className="p-2 bg-white dark:bg-gray-800 rounded-lg shadow-sm group-hover:bg-[#0d89b1] group-hover:text-white transition-colors">
-                    <Edit3 size={20} className="text-gray-400 group-hover:text-white" />
-                  </div>
-                </a>
-              </motion.div>
-            ))}
+            {documents.length > 0 ? (
+              documents.map((doc, index) => {
+                const trans = admissionService.getTranslation(doc, i18n.language);
+                return (
+                  <motion.div
+                    key={doc.id}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                  >
+                    <a
+                      href={doc.document_file}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-between p-6 bg-gray-50 dark:bg-gray-900 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-all group"
+                    >
+                      <div className="flex-1">
+                        <span className="text-xl font-black text-gray-900 dark:text-white uppercase tracking-tight">
+                          {trans.document_name}
+                        </span>
+                        {trans.note && (
+                          <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 font-medium">
+                            {trans.note}
+                          </p>
+                        )}
+                      </div>
+                      <div className="p-2 bg-white dark:bg-gray-800 rounded-lg shadow-sm group-hover:bg-[#0d89b1] group-hover:text-white transition-colors">
+                        <Download size={20} className="text-gray-400 group-hover:text-white" />
+                      </div>
+                    </a>
+                  </motion.div>
+                );
+              })
+            ) : (
+              <div className="text-center py-12">
+                <p className="text-gray-500 dark:text-gray-400 font-medium">
+                  Hozircha dars jadvali yuklanmagan.
+                </p>
+              </div>
+            )}
           </div>
         </div>
       </section>

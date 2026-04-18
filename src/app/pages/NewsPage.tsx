@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
-import { Calendar, ArrowRight, Loader2 } from 'lucide-react';
+import { Calendar, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router';
 import { newsService } from '../services/newsService';
 import { NewsItem } from '../types';
 import { useTranslation } from 'react-i18next';
 import { format } from 'date-fns';
 import { uz, ru } from 'date-fns/locale';
+import { Skeleton } from '../components/ui/skeleton';
 
 export function NewsPage() {
   const [news, setNews] = useState<NewsItem[]>([]);
@@ -102,13 +103,21 @@ export function NewsPage() {
                 </article>
               );
             })}
+            
+            {loading && Array.from({ length: page === 1 ? 6 : 3 }).map((_, i) => (
+              <div key={i} className="bg-white rounded-2xl overflow-hidden shadow-lg p-0">
+                <Skeleton className="h-56 w-full rounded-none" />
+                <div className="p-6">
+                  <Skeleton className="h-4 w-32 mb-4" />
+                  <Skeleton className="h-6 w-full mb-3" />
+                  <Skeleton className="h-6 w-2/3 mb-4" />
+                  <Skeleton className="h-4 w-full mb-2" />
+                  <Skeleton className="h-4 w-full mb-4" />
+                  <Skeleton className="h-10 w-32 rounded-xl" />
+                </div>
+              </div>
+            ))}
           </div>
-
-          {loading && (
-            <div className="flex justify-center mt-12">
-              <Loader2 className="animate-spin text-[#0d89b1]" size={40} />
-            </div>
-          )}
 
           {!loading && hasMore && (
             <div className="flex justify-center mt-12">
@@ -125,3 +134,4 @@ export function NewsPage() {
     </div>
   );
 }
+

@@ -1,11 +1,12 @@
 import { Link } from 'react-router';
-import { ChevronRight, Loader2 } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useState, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation, EffectFade, Parallax } from 'swiper/modules';
 import { sliderService } from '../../services/sliderService';
 import { SliderItem } from '../../types';
+import { motion } from 'framer-motion';
 
 // Swiper styles
 import 'swiper/css';
@@ -34,22 +35,14 @@ export function HeroSection() {
     fetchSliders();
   }, []);
 
-  if (loading) {
-    return (
-      <div className="h-[80vh] md:h-[95vh] flex items-center justify-center bg-gray-950">
-        <Loader2 className="w-12 h-12 text-[#0d89b1] animate-spin" />
-      </div>
-    );
-  }
-
-  // Fallback if no sliders
-  if (sliders.length === 0) {
+  // Show immediate fallback/default content while loading or if no sliders
+  if (loading || sliders.length === 0) {
     return (
       <section className="relative h-[80vh] md:h-[95vh] min-h-[600px] overflow-hidden bg-gray-950">
         <div className="absolute inset-0">
           <img
             src="https://www.samdu.uz/upload/cover-images/62b00cc62723f-62b00cc627241-62b00cc627242-62b00cc627243.png"
-            alt="Fallback"
+            alt="Default"
             className="w-full h-full object-cover opacity-50"
             loading="eager"
           />
@@ -60,12 +53,30 @@ export function HeroSection() {
         </div>
         <div className="relative container mx-auto px-4 h-full flex items-center">
           <div className="max-w-3xl text-white">
-            <h1 className="text-4xl md:text-7xl font-black mb-6 leading-tight uppercase">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="inline-flex items-center gap-2 px-5 py-2 bg-[#0d89b1]/15 backdrop-blur-xl rounded-full text-xs font-black mb-8 uppercase tracking-[0.3em] border border-[#0d89b1]/40"
+            >
+              <span className="w-2 h-2 bg-[#0d89b1] rounded-full animate-pulse"></span>
+              {t('home.heroBadge', 'LITSEYIMIZNING YANGI DAVRI')}
+            </motion.div>
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+              className="text-4xl md:text-7xl font-black mb-6 leading-tight uppercase"
+            >
               {t('home.heroTitle')}
-            </h1>
-            <p className="text-lg md:text-2xl text-gray-200 mb-10 font-bold opacity-90 max-w-2xl">
+            </motion.h1>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="text-lg md:text-2xl text-gray-200 mb-10 font-bold opacity-90 max-w-2xl border-l-4 border-[#0d89b1] pl-8 italic"
+            >
               {t('home.heroDesc')}
-            </p>
+            </motion.p>
           </div>
         </div>
       </section>

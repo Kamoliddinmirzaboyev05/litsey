@@ -1,4 +1,5 @@
-import { Loader2, Calendar, Image as ImageIcon, Eye, ChevronRight, Home } from 'lucide-react';
+import { Skeleton } from '../components/ui/skeleton';
+import { ChevronRight, Home } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
@@ -30,23 +31,6 @@ export function GalleryPage() {
     fetchAlbums();
   }, []);
 
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString(currentLang === 'uz' ? 'uz-UZ' : 'ru-RU', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    });
-  };
-
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-950">
-        <Loader2 className="w-12 h-12 text-[#0d89b1] animate-spin" />
-      </div>
-    );
-  }
-
   return (
     <div className="min-h-screen bg-white dark:bg-gray-950 transition-colors duration-300">
       {/* Breadcrumbs */}
@@ -77,63 +61,38 @@ export function GalleryPage() {
       </div>
 
       {/* Gallery Grid */}
-      <section className="py-16 md:py-24 bg-white dark:bg-gray-950">
+      <section className="py-12 md:py-16 bg-white dark:bg-gray-950">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-7xl mx-auto">
-            {albums.map((album, index) => {
-              const translation = galleryService.getTranslation(album, currentLang);
-              
-              return (
-                <motion.div
-                  key={album.id}
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="group relative bg-gray-100 dark:bg-gray-900 rounded-[20px] overflow-hidden aspect-[4/5] md:aspect-square shadow-sm hover:shadow-xl transition-all duration-500"
-                >
-                  <img
-                    src={album.cover_image}
-                    alt={translation.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                  
-                  {/* Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-100 transition-opacity duration-500">
-                    <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8">
-                      <div className="flex items-center gap-2 mb-3 text-white/80">
-                        <Calendar size={14} className="text-[#0d89b1]" />
-                        <span className="text-[10px] md:text-xs font-bold uppercase tracking-widest">
-                          {formatDate(album.event_date)}
-                        </span>
-                      </div>
-                      
-                      <h3 className="text-xl md:text-2xl font-black text-white mb-4 leading-tight uppercase tracking-tight">
-                        {translation.title}
-                      </h3>
-
-                      <div className="flex items-center justify-between mt-2">
-                        <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/20">
-                          <ImageIcon size={14} className="text-white" />
-                          <span className="text-[10px] md:text-xs font-black text-white uppercase tracking-widest">
-                            {album.photos_count} {t('gallery.photos')}
-                          </span>
-                        </div>
-                        
-                        <div className="w-10 h-10 md:w-12 md:h-12 bg-[#0d89b1] rounded-full flex items-center justify-center transform translate-x-4 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-500 shadow-lg shadow-[#0d89b1]/40">
-                          <Eye className="text-white w-5 h-5 md:w-6 md:h-6" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Click area */}
-                  <Link to={`/gallery/${album.slug}`} className="absolute inset-0 z-10" aria-label={translation.title} />
-                </motion.div>
-              );
-            })}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-7xl mx-auto">
+            {loading ? (
+              Array.from({ length: 8 }).map((_, i) => (
+                <Skeleton key={i} className="aspect-square rounded-md" />
+              ))
+            ) : (
+              albums.map((album, index) => {
+                const translation = galleryService.getTranslation(album, currentLang);
+                
+                return (
+                  <motion.div
+                    key={album.id}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.5, delay: index * 0.05 }}
+                    className="group relative bg-gray-100 dark:bg-gray-900 rounded-md overflow-hidden aspect-square shadow-sm hover:shadow-md transition-all duration-300 cursor-default"
+                  >
+                    <img
+                      src={album.cover_image}
+                      alt={translation.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </motion.div>
+                );
+              })
+            )}
           </div>
         </div>
       </section>
     </div>
   );
 }
+

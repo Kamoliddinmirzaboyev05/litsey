@@ -356,6 +356,58 @@ export interface AlbumResponse {
   results: Album[];
 }
 
+export interface VideoTranslation {
+  title: string;
+  description: string;
+}
+
+export interface Video {
+  id: number;
+  translations: {
+    uz: VideoTranslation;
+    uz_cyrl: VideoTranslation;
+    ru: VideoTranslation;
+    en: VideoTranslation;
+    [key: string]: VideoTranslation;
+  };
+  video_file: string;
+  thumbnail: string;
+  sort_order: number;
+  is_active: boolean;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface VideoResponse {
+  count: number;
+  next: string | null;
+  previous: string | null;
+  results: Video[];
+}
+
+export interface AdmissionInfo {
+  id: number;
+  academic_year: string;
+  total_quota: number;
+  grant_quota: number;
+  contract_quota: number;
+  contract_price: string;
+  application_start: string;
+  application_end: string;
+  exam_date: string;
+  results_date: string;
+  online_apply_url: string;
+  is_active: boolean;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface AdmissionCurrentResponse {
+  admission_info: AdmissionInfo;
+  subjects: Subject[];
+  documents: AdmissionDocument[];
+}
+
 export interface MenuItem {
   label: string;
   href: string;

@@ -1,4 +1,4 @@
-import { AdmissionDocument, AdmissionDocumentTranslation, Subject, SubjectTranslation } from '../types';
+import { AdmissionDocument, AdmissionDocumentTranslation, Subject, SubjectTranslation, AdmissionCurrentResponse } from '../types';
 
 const API_BASE_URL = 'https://academiklitsey.pythonanywhere.com';
 
@@ -15,6 +15,14 @@ export const admissionService = {
     const response = await fetch(`${API_BASE_URL}/admission/subjects/`);
     if (!response.ok) {
       throw new Error('Failed to fetch subjects');
+    }
+    return response.json();
+  },
+
+  async getCurrentAdmission(): Promise<AdmissionCurrentResponse> {
+    const response = await fetch(`${API_BASE_URL}/admission/current/`);
+    if (!response.ok) {
+      throw new Error('Failed to fetch current admission info');
     }
     return response.json();
   },
